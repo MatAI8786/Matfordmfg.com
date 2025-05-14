@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Section with Animated Image -->
+<div class="mori-hero">
+    <div class="mori-overlay">
+        <h1>Mori Seiki Precision</h1>
+        <p>At Matford Manufacturing, we use Mori Seiki NLX series machines to deliver high-precision components 
+           with advanced automation. This ensures consistency, efficiency, and top-quality results for our customers.</p>
+    </div>
+    <img src="{{ url_for('static', filename='images/mori.png') }}" class="mori-image" alt="Mori Seiki Machine">
+</div>
+
+{% endblock %}

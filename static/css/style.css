@@ -1,0 +1,315 @@
+/* -------------  Global font & colours ------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root{
+    --blue: #0a3d62;
+    --overlay-bg: rgba(0,0,0,.75);     /* darker */
+}
+
+body{
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background-color:var(--blue);
+    color:#fff;
+}
+
+/* -------------  Navigation ------------- */
+nav{
+    background:transparent;
+    padding:10px;
+    display:flex;
+    justify-content:center;
+}
+nav ul{
+    list-style:none;
+    display:flex;
+    padding:0;
+}
+nav ul li{margin:0 15px;}
+nav ul li a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    padding:10px 15px;
+    border-radius:5px;
+}
+nav ul li a:hover{background:rgba(255,255,255,.2);}
+
+/* -------------  Logo ------------- */
+.logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+.logo img{
+    max-width:320px;      /* a bit smaller */
+    height:auto;
+    display:block;
+    margin:0 auto;
+}
+
+/* -------------  Generic hero sections ------------- */
+.hero-section,
+.contact-hero{
+    position:relative;
+    width:100%;
+    height:70vh;                                       /* was 80vh */
+    background:no-repeat center center/contain;        /* scale down */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* individual background paths */
+.hero-section       {background-image:url('/static/images/mori_operator_panel.webp');}
+.contact-hero       {background-image:url('/static/images/loading_image_v2.webp') !important;}
+
+/* shared overlay */
+.overlay{
+    position:absolute;
+    background:var(--overlay-bg);                      /* darker */
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    opacity:0;
+    transition:opacity .5s ease-in-out;
+}
+.hero-section:hover .overlay,
+.contact-hero:hover .overlay{opacity:1;}
+
+/* -------------  Contact page layout ------------- */
+.contact-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    width:90%;
+    max-width:1200px;
+    margin:30px auto;
+}
+.social-links{width:40%;text-align:center;}
+.social-btn{
+    display:block;
+    margin:10px auto;
+    padding:10px 15px;
+    width:200px;
+    font-weight:600;
+    border-radius:5px;
+    text-decoration:none;
+    color:#fff;
+    transition:background .3s;
+}
+.facebook{background:#3b5998;} .facebook:hover{background:#2d4373;}
+.twitter {background:#1da1f2;} .twitter:hover {background:#0d8ddc;}
+.linkedin{background:#0077b5;} .linkedin:hover{background:#005582;}
+
+.map-container{
+    width:55%;
+    height:300px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:20px;
+}
+
+/* -------------  Mori machines hero ------------- */
+.mori-hero{
+    position:relative;
+    width:100%;
+    height:70vh;
+    background-color:var(--blue);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+/* text card */
+.mori-overlay{
+    position:absolute;
+    left:5%;
+    max-width:35%;
+    background:var(--overlay-bg);
+    padding:20px;
+    border-radius:15px;
+    backdrop-filter:blur(5px);
+    z-index:2;
+}
+.mori-overlay h1{font-size:2.2rem;margin:0;}
+.mori-overlay p {font-size:1.1rem;line-height:1.5;margin:10px 0 0;}
+
+/* ——— PAGE HEADING ——— */
+.page-heading {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+.page-heading h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+.page-heading .lead {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+/* ========== HOME HERO ========== */
+.home-hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+/* blurred background layer */
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('/static/images/Mori_home_bg.jpg') no-repeat center center/cover;
+  background-size: cover;
+  /* softer blur */
+  filter: blur(2px) brightness(0.7);
+  z-index: 0;
+}
+
+/* ─── FEATURES / BUBBLES OVER HOME HERO ─── */
+.features {
+  position: relative;      /* ensures bubbles sit above ::before */
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 0 1rem;
+  z-index: 2;              /* above overlay and before pseudo */
+}
+
+/* each row of feature text */
+.feature {
+  display: flex;
+  justify-content: flex-start;  /* default left side */
+  align-items: center;
+}
+
+/* flip the row for right-side bubbles */
+.feature.reverse {
+  justify-content: flex-end;
+}
+
+/* the dark bubble itself */
+.feat-bubble {
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  max-width: 60%;
+  opacity: 0;                   /* start hidden */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+/* slide in from left */
+@keyframes slideFromLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+/* slide in from right */
+@keyframes slideFromRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+.slide-left .feat-bubble {
+  animation-name: slideFromLeft;
+}
+.slide-right .feat-bubble {
+  animation-name: slideFromRight;
+}
+
+/* ─── RESPONSIVE: stack bubbles on mobile ─── */
+@media (max-width: 768px) {
+  .features {
+    gap: 1.5rem;
+  }
+  .feature, .feature.reverse {
+    justify-content: center !important;
+    text-align: center;
+  }
+  .feat-bubble {
+    max-width: 100%;
+  }
+}
+
+/* content container sits above the pseudo-element */
+.home-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 5%;
+}
+
+/* the actual text box */
+.home-text {
+  max-width: 600px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+  /* entry animation */
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* text styles */
+.home-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.home-text p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* simple fadeInUp */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .home-hero {
+    height: auto;
+    padding: 50px 0;
+  }
+  .home-hero::before {
+    filter: blur(2px) brightness(0.7);
+  }
+  .home-content {
+    padding: 0 2rem;
+  }
+  .home-text {
+    width: 100%;
+    max-width: none;
+    animation: fadeIn 1s ease-out forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
