@@ -291,6 +291,30 @@ nav ul li a:hover{background:rgba(255,255,255,.2);}
   }
 }
 
+/* ====== TOP LOGO & PARTS TILES ====== */
+.header-tiles {
+  display: flex;
+  justify-content: center;   /* center everything */
+  align-items: center;
+  gap: 2.5rem;                 /* space between tiles */
+  padding: 1rem 0;
+}
+
+.header-tiles .tile {
+  max-width: 120px;          /* all part-images max out at 120px */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* shrink the center logo a bit if needed */
+.header-tiles .logo img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+}
+
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .home-hero {

@@ -7,21 +7,43 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="{{ url_for('static', filename='images/matford logo.png') }}" alt="Matford Manufacturing Logo">
-        </div>        
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('about') }}">About</a></li>
-                <li><a href="{{ url_for('services') }}">Services</a></li>
-                <li><a href="{{ url_for('mori_machines') }}">Mori Machines</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <div class="header-tiles">
+    <!-- left tiles -->
+    <img class="tile"
+         src="{{ url_for('static', filename='images/part1.png') }}"
+         alt="Part 1">
+    <img class="tile"
+         src="{{ url_for('static', filename='images/part2.png') }}"
+         alt="Part 2">
+
+    <!-- central logo -->
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/matford logo.png') }}"
+           alt="Matford Manufacturing Logo">
+    </div>
+
+    <!-- right tiles -->
+    <img class="tile"
+         src="{{ url_for('static', filename='images/part3.png') }}"
+         alt="Part 3">
+    <img class="tile"
+         src="{{ url_for('static', filename='images/part4.png') }}"
+         alt="Part 4">
+  </div>
+
+  <nav>
+    <ul id="nav-menu">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('services') }}">Services</a></li>
+      <li><a href="{{ url_for('mori_machines') }}">Mori Machines</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+
 
     <main>
         {% block content %}{% endblock %}
