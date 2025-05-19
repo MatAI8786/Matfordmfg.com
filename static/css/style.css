@@ -31,11 +31,12 @@
     align-items: center;
 }
 
-/* logo on the left  */
+/* fluid logo – grows with viewport, but stays between 120 px ↔ 320 px */
 .banner-logo img{
-    max-height: 170px;          /* never taller than banner */
-    width: auto;
+    height: clamp(140px , 11vw , 190px);
+    width:  auto;
 }
+
 
 /* CTA area */
 .banner-cta{
@@ -275,25 +276,39 @@ nav ul li a:hover{background:rgba(255,255,255,.2);}
 }
 
 
-/* ── Responsive ── */
+/* ───────────────── mobile tweaks ───────────────── */
 @media (max-width: 768px) {
-  .home-hero {
-    height: auto;
-    padding: 50px 0;
-  }
-  .home-hero::before {
-    filter: blur(2px) brightness(0.7);
-  }
-  .home-content {
-    padding: 0 2rem;
-  }
-  .home-text {
-    width: 100%;
-    max-width: none;
-    animation: fadeIn 1s ease-out forwards;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
+
+    /* ▸ masthead layout  
+       (logo + CTA buttons stack vertically on narrow screens) */
+    .banner-inner{
+        flex-direction: column;
+        gap: .75rem;
+        padding: 1.5rem .75rem;   /* keeps it comfy */
+    }
+
+    /* -------------------------------------------------
+       Everything you already had for the home-hero
+       bubbles, text-box, etc. — unchanged
+    --------------------------------------------------*/
+    .home-hero{
+        height: auto;
+        padding: 50px 0;
+    }
+    .home-hero::before{
+        filter: blur(2px) brightness(.7);
+    }
+    .home-content{
+        padding: 0 2rem;
+    }
+    .home-text{
+        width: 100%;
+        max-width: none;
+        animation: fadeIn 1s ease-out forwards;
+    }
+    @keyframes fadeIn{
+        from{opacity:0;}
+        to{opacity:1;}
+    }
 }
+
