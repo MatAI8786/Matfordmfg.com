@@ -68,15 +68,6 @@
 .icon-phone::before{content:"📞";}
 .icon-mail::before {content:"✉";}
 
-/* -- MOBILE -- stack logo + buttons   */
-@media(max-width:768px){
-    .banner-inner{
-        flex-direction:column;
-        gap:1rem;
-    }
-    .banner-logo img{max-height:90px;}
-}
-
 
 body{
     font-family: 'Inter', Helvetica, Arial, sans-serif;
@@ -276,39 +267,41 @@ nav ul li a:hover{background:rgba(255,255,255,.2);}
 }
 
 
-/* ───────────────── mobile tweaks ───────────────── */
+/* ───────────────  MOBILE  ( ≤ 768 px )  ─────────────── */
 @media (max-width: 768px) {
 
-    /* ▸ masthead layout  
-       (logo + CTA buttons stack vertically on narrow screens) */
-    .banner-inner{
-        flex-direction: column;
-        gap: .75rem;
-        padding: 1.5rem .75rem;   /* keeps it comfy */
-    }
+  /* stack logo & CTA vertically */
+  .banner-inner {
+    flex-direction: column;
+    gap: .75rem;
+    padding: 1.5rem .75rem;
+  }
 
-    /* -------------------------------------------------
-       Everything you already had for the home-hero
-       bubbles, text-box, etc. — unchanged
-    --------------------------------------------------*/
-    .home-hero{
-        height: auto;
-        padding: 50px 0;
-    }
-    .home-hero::before{
-        filter: blur(2px) brightness(.7);
-    }
-    .home-content{
-        padding: 0 2rem;
-    }
-    .home-text{
-        width: 100%;
-        max-width: none;
-        animation: fadeIn 1s ease-out forwards;
-    }
-    @keyframes fadeIn{
-        from{opacity:0;}
-        to{opacity:1;}
-    }
+  /* fluid logo – grows with viewport but stays reasonable */
+  .banner-logo img {
+    /* min 140 px  ·  grows at ~11 vw  ·  max 240 px */
+    height: clamp(140px, 11vw, 240px);
+    width:  auto;
+    margin-bottom: 0;          /* remove leftover gap */
+  }
+
+  /* push CTA further away from the logo */
+  .banner-cta {
+    margin-top: 2.5rem;        /* adjust as you like */
+    order: 2;                  /* ensure it sits after the logo */
+  }
+
+  /* -------------  home-hero you already built ------------- */
+  .home-hero       { height:auto; padding:50px 0; }
+  .home-hero::before{ filter:blur(2px) brightness(.7); }
+  .home-content    { padding:0 2rem; }
+
+  .home-text {
+    width:100%;
+    max-width:none;
+    animation:fadeIn 1s ease-out forwards;
+  }
+  @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
 }
+
 
