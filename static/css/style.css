@@ -52,17 +52,37 @@
     font-weight:600;
     text-decoration:none;
 }
+.btn-primary{
+    padding: 0.9rem 2.5rem;      /* ↑ height   ←→ width  */
+    font-size: 1.05rem;          /* a little larger text */
+    font-weight: 600;            /* matches site headings */
+    letter-spacing: .2px;
+}
 .btn:hover{background:#b31f1f;}
+
+/* —— Solid white phone / mail circles —— */
 .icon-link{
+    /* layout unchanged */
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width:38px;height:38px;
+    width:38px;
+    height:38px;
     border:2px solid #fff;
     border-radius:50%;
-    text-decoration:none;
+
+    /* new bits ↓ */
+    background:#fff;           /* solid fill */
+    color:var(--blue);         /* phone / mail glyph in brand blue */
+    text-decoration:none;      /* ← removes the underline */
+    transition:background .25s,color .25s;
 }
-.icon-link:hover{background:rgba(255,255,255,.15);}
+
+/* subtle hover effect (optional) */
+.icon-link:hover{
+    background:#f1f5fa;        /* very-light blue-grey */
+}
+
 
 /* simple placeholder icons (use FontAwesome later) */
 .icon-phone::before{content:"📞";}
@@ -276,6 +296,35 @@ nav ul li a:hover{background:rgba(255,255,255,.2);}
     gap: .75rem;
     padding: 1.5rem .75rem;
   }
+
+  /* ---------- TABLET ( 992 px ► 769 px ) ---------- */
+@media (max-width: 992px) and (min-width: 769px){
+
+  /* keep row layout, but let things wrap */
+  .banner-inner{
+      flex-wrap: wrap;           /* allow 2-row flow            */
+      gap:   1rem;               /* breathing-room               */
+  }
+
+  /* logo stays left, nothing to change */
+  
+  /* pill + icons become a centred second row */
+  .banner-cta{
+      flex: 0 0 100%;            /* full-width row               */
+      justify-content: center;   /* centred horizontally         */
+      margin-top:   1rem;        /* push away from logo          */
+      order:  2;                 /* keep it after the logo       */
+  }
+
+  /* tighten the pill a little so it never overflows */
+  .btn-primary{
+      font-size: 1rem;
+      padding: 0.8rem 2rem;
+  }
+
+  /* stop the two circle icons from shrinking away */
+  .icon-link{ flex: 0 0 auto; }
+}
 
   /* fluid logo – grows with viewport but stays reasonable */
   .banner-logo img {
