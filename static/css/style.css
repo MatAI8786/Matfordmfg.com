@@ -97,27 +97,46 @@ body{
     color:#fff;
 }
 
-/* -------------  Navigation ------------- */
-nav{
-    background:transparent;
-    padding:10px;
+/* -------------  Navigation (thin dark strip) ------------- */
+
+nav{                          /* the bar itself */
+    background:#062d5794;       /* darker blue */
+    padding:4px 0;            /* was 10 px → slimmer */
+    box-shadow:0 2px 4px rgba(0,0,0,.15);
+}
+
+/* UL and LI reset */
+nav ul, nav li{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+/* align the list horizontally */
+nav ul{
     display:flex;
     justify-content:center;
 }
-nav ul{
-    list-style:none;
-    display:flex;
-    padding:0;
-}
-nav ul li{margin:0 15px;}
-nav ul li a{
+
+/* space between items (tight) */
+nav li{ margin:0 10px; }
+
+/* links */
+nav a{
+    display:inline-block;
     color:#fff;
-    text-decoration:none;
     font-weight:600;
-    padding:10px 15px;
-    border-radius:5px;
+    font-size:0.95rem;        /* optional: a hair smaller */
+    text-decoration:none;
+    padding:6px 14px;         /* was 10 × 15 → sleeker pill */
+    border-radius:4px;
+    transition:background .2s;
 }
-nav ul li a:hover{background:rgba(255,255,255,.2);}
+
+nav a:hover{
+    background:rgba(255,255,255,.15); /* light glow on dark strip */
+}
+
 
 /* -------------  Logo ------------- */
 .logo{
