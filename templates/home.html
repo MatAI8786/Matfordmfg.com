@@ -12,30 +12,16 @@
     </p>
   </section>
 
-  <!-- ─── HOME HERO (with your three bubbles) ─── -->
-  <section class="home-hero">
-    <div class="home-content">
-      <div class="features">
-        <!-- 1st bubble: slide in from left -->
-        <div class="feature slide-left">
-          <div class="feat-bubble">
-            <p>We are fully approved to ISO9001, certificate no. 26080.</p>
-          </div>
-        </div>
-        <!-- 2nd bubble: slide in from right -->
-        <div class="feature reverse slide-right">
-          <div class="feat-bubble">
-            <p>The company focuses on offering a sub-contract precision machining service and bespoke machined fasteners and fastener solutions to engineering companies all generally to customer specification.</p>
-          </div>
-        </div>
-        <!-- 3rd bubble: slide in from left again -->
-        <div class="feature slide-left">
-          <div class="feat-bubble">
-            <p>Our aim is to provide customers with a first class service upon which they can rely.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ─── SINGLE HERO (image left, text right) ─── -->
+<section class="solo-hero">
+  <div class="solo-hero__image">
+    <img src="{{ url_for('static', filename='images/part1.png') }}"
+         alt="Precision turned part">
+  </div>
+  <div class="solo-hero__copy">
+    <h2>High-Precision Turning, Fast Turnarounds</h2>
+    <p>Leveraging five state-of-the-art DMG MORI NLX centres, we deliver custom parts in as little as 24 hrs—without sacrificing tolerances.</p>
+  </div>
+</section>
 
 {% endblock %}

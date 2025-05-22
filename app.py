@@ -28,10 +28,5 @@ def contact():
 def mori_machines():
     return render_template("mori_machines.html")
 
-# Ensure Flask Serves Static Files Properly
-@app.route('/static/images/<path:filename>')
-def serve_static_images(filename):
-    return send_from_directory(os.path.join(app.root_path, 'static/images'), filename)
-
 if __name__ == "__main__":
     app.run(debug=True)

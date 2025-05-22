@@ -1,6 +1,6 @@
 /* -------------  Global font & colours ------------- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 :root{
     --blue: #0a3d62;
     --overlay-bg: rgba(0,0,0,.75);     /* darker */
@@ -305,6 +305,106 @@ nav a:hover{
   }
 }
 
+/* ─── SOLO HERO ─── */
+.solo-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 2rem;
+}
+
+/* make it stack on small screens */
+@media (max-width: 768px) {
+  .solo-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+/* image styling */
+.solo-hero__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* copy styling */
+.solo-hero__copy {
+  /* Pro Tip #2: Typography Hierarchy */
+  font-family: 'Oswald', sans-serif;  /* load Oswald from Google Fonts */
+  color: #fff;
+}
+
+.solo-hero__copy h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.solo-hero__copy p {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+/* Pro Tip #3: Whitespace & Visual Focus */
+body {
+  --hero-bg: #062d57;
+}
+
+.solo-hero {
+  background-color: var(--hero-bg);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+/* ─── UPDATE SOLO HERO LAYOUT ─── */
+.solo-hero {
+  display: grid;
+  /* 25% image, 75% text */
+  grid-template-columns: 20% 80%;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 0.8rem;           /* thinner than before */
+  background-color: var(--hero-bg);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+/* stack on tablet+mobile */
+@media (max-width: 768px) {
+  .solo-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+/* ─── FADE-IN-UP ANIMATION ─── */
+/* start hidden + down 20px */
+.solo-hero__image img,
+.solo-hero__copy {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* stagger copy a little later */
+.solo-hero__copy {
+  animation-delay: 0.4s;
+}
+
+/* keyframes */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* ───────────────  MOBILE  ( ≤ 768 px )  ─────────────── */
 @media (max-width: 768px) {
@@ -358,18 +458,6 @@ nav a:hover{
     margin-top: 2.5rem;        /* adjust as you like */
     order: 2;                  /* ensure it sits after the logo */
   }
-
-  /* -------------  home-hero you already built ------------- */
-  .home-hero       { height:auto; padding:50px 0; }
-  .home-hero::before{ filter:blur(2px) brightness(.7); }
-  .home-content    { padding:0 2rem; }
-
-  .home-text {
-    width:100%;
-    max-width:none;
-    animation:fadeIn 1s ease-out forwards;
-  }
-  @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
 }
 
 
