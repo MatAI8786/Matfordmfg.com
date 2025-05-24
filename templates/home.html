@@ -2,26 +2,25 @@
 
 {% block content %}
 
-  <!-- ─── PAGE HEADING ─── -->
-  <section class="page-heading">
-    <h1>Engineering excellence that meets your needs</h1>
-    <p class="lead">
-      Matford Manufacturing employs many years of experience within the industry of precision turned parts,
-      special and standard fasteners offering extensive technical knowledge to help provide a unique service
-      to meet your requirements.
-    </p>
-  </section>
+<section class="video-hero">
+  <video
+    class="video-hero__media"
+    src="{{ url_for('static', filename='video/nlx_loop.mp4') }}"
+    autoplay muted loop playsinline
+    disablepictureinpicture
+    controlslist="nodownload nofullscreen noremoteplayback">
+  </video>
 
-  <!-- ─── SINGLE HERO (image left, text right) ─── -->
-<section class="solo-hero">
-  <div class="solo-hero__image">
-    <img src="{{ url_for('static', filename='images/part1.png') }}"
-         alt="Precision turned part">
-  </div>
-  <div class="solo-hero__copy">
-    <h2>High-Precision Turning, Fast Turnarounds</h2>
-    <p>Leveraging five state-of-the-art DMG MORI NLX centres, we deliver custom parts in as little as 24 hrs—without sacrificing tolerances.</p>
+  <!-- semi-transparent color overlay -->
+  <div class="video-hero__overlay"></div>
+
+  <!-- the text you want on top -->
+  <div class="video-hero__content">
+    <h1 class="video-hero__title">High-Precision Turning, Fast Turnarounds</h1>
+    <p class="video-hero__subtitle">Custom parts in as little as 24 hrs—without sacrificing tolerances.</p>
+    <a href="/contact" class="video-hero__cta">Request a Free Quote</a>
   </div>
 </section>
+
 
 {% endblock %}

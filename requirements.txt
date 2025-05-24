@@ -1,3 +1,6 @@
 Flask
 Flask-Cors
 gunicorn
+# ─── video handling ───
+youtube-dl==2021.12.17   # the classic, still works for most URLs
+ffmpeg-python==0.2.0     # lightweight wrapper – needs system ffmpeg
