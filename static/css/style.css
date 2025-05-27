@@ -112,23 +112,21 @@ nav{                          /* the bar itself */
     padding-bottom: 0;   /* if you have padding, zero it out */
 }
 
-
-
-/* UL and LI reset */
-nav ul, nav li{
-    margin:0;
-    padding:0;
-    list-style:none;
+/* —— DESKTOP NAV STRIP —— */
+@media (min-width: 769px) {        /* 769 px and up */
+    nav ul, nav li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    nav ul {
+        display: flex;
+        justify-content: center;
+    }
+    nav li {
+        margin: 0 10px;
+    }
 }
-
-/* align the list horizontally */
-nav ul{
-    display:flex;
-    justify-content:center;
-}
-
-/* space between items (tight) */
-nav li{ margin:0 10px; }
 
 /* links */
 nav a{
@@ -596,6 +594,24 @@ main > .video-hero {
   transform: translateY(0) rotate(-45deg);
 }
 
+/* slide-in drawer: hidden by default – slides in when .open is added */
+.mobile-nav {
+    position:fixed;
+    top:0;
+    right:0;          /* anchor to right edge */
+    left:auto;
+    width:220px;      /* drawer width         */
+    max-height:100vh;
+    background:var(--blue);
+    transform:translateX(100%);     /* start off-canvas */
+    transition:transform .3s ease;
+    padding-top:4rem; /* leave space for toggle icon */
+    overflow-y:auto;
+    box-shadow:-4px 0 12px rgba(0,0,0,.25);
+    z-index:998;
+}
+
+
 .mobile-nav.open { transform: translateX(0); }
 
 .mobile-nav ul { 
@@ -619,10 +635,10 @@ main > .video-hero {
 /* ───────── MOBILE LAYOUT ───────── */
 @media (max-width:768px){                         /* ≤ 768 px  */
 
-/* 1) hide the white desktop strip completely */
-    nav{                                         /* entire <nav> bar  */
-        display:none !important;                 /* win every cascade */
-    }
+/* 1) hide ONLY the desktop <nav>, keep the drawer visible */
+nav:not(.mobile-nav){                          /* tag nav  BUT  NOT the drawer */
+    display:none !important;
+}
 
 /* 2) show – and position – the hamburger */
     .nav-toggle{                                 /* clickable icon    */
@@ -631,6 +647,11 @@ main > .video-hero {
         top:.75rem;  right:1rem;                 /* right-hand corner */
         z-index:999;
     }
+
+    /* keep drawer vertical */
+  nav.mobile-nav ul   { display:block !important; }
+  nav.mobile-nav li   { margin:0; }
+
 
 /* 4) tidy drawer links */
     .mobile-nav ul{ list-style:none; margin:0; padding:0; }
@@ -652,4 +673,27 @@ main > .video-hero {
         padding:1.5rem .75rem;
     }
 }
+
+/* keep drawer list vertical */
+.mobile-nav ul {         /* no tag-prefix – just the class */
+    display:block !important;
+    margin:0; padding:0;
+}
+.mobile-nav li { margin:0; }
+
+
+/* ─────────────── NAV–HERO SPACING RESET ─────────────── */
+nav {
+  /* win every cascade and strip out any stray bottom margin */
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* force the video-hero to hug the nav with no gap */
+nav + .video-hero,
+main > .video-hero {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 
