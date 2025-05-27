@@ -498,6 +498,8 @@ body {
     padding: 1.5rem .75rem;
   }
 
+
+
   /* ---------- TABLET ( 992 px ► 769 px ) ---------- */
 @media (max-width: 992px) {
 
@@ -557,5 +559,97 @@ body {
 main > .video-hero {
   margin-top: 0 !important;
   padding-top: 0 !important;
+}
+
+/* ─── MOBILE HAMBURGER ─── */
+.nav-toggle {                        /* clickable icon  */
+  position: absolute;                /* hugs left edge  */
+  top: 0.75rem; right: 1rem; left: auto;
+  width: 44px; height: 44px;         /* thumb-size tap  */
+  display: none;                     /* hide on desktop */
+  background: transparent;
+  border: 0;
+  z-index: 999;                      /* above masthead  */
+}
+
+.nav-toggle__bar,                    /* three bars      */
+.nav-toggle__bar::before,
+.nav-toggle__bar::after {
+  content: '';
+  display: block;
+  width: 24px; height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+.nav-toggle__bar::before { transform: translateY(-7px); }
+.nav-toggle__bar::after  { transform: translateY(4px); }
+
+/*  when menu is open ➜ animate into "X"  */
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar {
+  background: transparent;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before {
+  transform: translateY(0) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after {
+  transform: translateY(0) rotate(-45deg);
+}
+
+.mobile-nav.open { transform: translateX(0); }
+
+.mobile-nav ul { 
+  display: block;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.mobile-nav li { margin: 0; }
+.mobile-nav a {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+}
+.mobile-nav a:hover {
+  background: rgba(255,255,255,.08);
+}
+
+/* ───────── MOBILE LAYOUT ───────── */
+@media (max-width:768px){                         /* ≤ 768 px  */
+
+/* 1) hide the white desktop strip completely */
+    nav{                                         /* entire <nav> bar  */
+        display:none !important;                 /* win every cascade */
+    }
+
+/* 2) show – and position – the hamburger */
+    .nav-toggle{                                 /* clickable icon    */
+        display:block !important;                /* resurrect button  */
+        position:fixed;                          /* keep it visible   */
+        top:.75rem;  right:1rem;                 /* right-hand corner */
+        z-index:999;
+    }
+
+/* 4) tidy drawer links */
+    .mobile-nav ul{ list-style:none; margin:0; padding:0; }
+    .mobile-nav li{ margin:0; }
+    .mobile-nav a{
+        display:block;
+        padding:1rem 1.25rem;
+        font-family:'Roboto',sans-serif;
+        font-weight:500;
+        color:#fff;
+        text-decoration:none;
+    }
+    .mobile-nav a:hover{ background:rgba(255,255,255,.08); }
+
+/* 5) stack logo + CTA vertically (unchanged from before) */
+    .banner-inner{
+        flex-direction:column;
+        gap:.75rem;
+        padding:1.5rem .75rem;
+    }
 }
 
