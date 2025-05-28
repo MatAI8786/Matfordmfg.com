@@ -6,6 +6,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');  /* technical, highly legible */   
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap');         /* modern, monospaced feel */      
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');           /* elegant, narrow sans */      
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap');*/   /* #3 */
+
 :root{
     --blue: #0a3d62;
     --overlay-bg: rgba(0,0,0,.75);     /* darker */
@@ -91,15 +93,14 @@
 
 /* simple placeholder icons (use FontAwesome later) */
 .icon-phone::before{content:"📞";}
-.icon-mail::before {content:"✉";}
 
 
 body{
-    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
     margin:0;
     padding:0;
     background-color:var(--blue);
-    color:#fff;
+    color:#000000;
 }
 
 /* -------------  Navigation (thin dark strip) ------------- */
@@ -624,7 +625,7 @@ main > .video-hero {
   display: block;
   padding: 1rem 1.5rem;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   text-decoration: none;
 }
@@ -659,7 +660,7 @@ nav:not(.mobile-nav){                          /* tag nav  BUT  NOT the drawer *
     .mobile-nav a{
         display:block;
         padding:1rem 1.25rem;
-        font-family:'Roboto',sans-serif;
+        font-family:'IBM Plex Sans',sans-serif;
         font-weight:500;
         color:#fff;
         text-decoration:none;
@@ -695,5 +696,40 @@ main > .video-hero {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+
+/* ─── MOBILE-DRAWER VISUAL TWEAKS ────────────────────────── */
+/* append this right after your existing .mobile-nav{…} block */
+
+/* 1 ▸ softer, glassy panel */
+.mobile-nav{
+    /* existing values stay; we just add/override ↓ */
+    background: rgba(10,61,98,.90);      /* brand-blue @ 90 % opacity  */
+    backdrop-filter: blur(3px);          /* subtle glass-blur          */
+    border-radius: 0 0 0 16px;           /* round left-bottom corner   */
+                                         /* (top-right & bottom-right
+                                            stay square so the panel
+                                            hugs viewport edges)       */
+    box-shadow: -6px 0 14px rgba(0,0,0,.30);   /* a little softer */
+}
+
+/* 2 ▸ centre each link & add breathing-room */
+.mobile-nav a{
+    text-align: center;          /* horizontal centring           */
+    padding: 1.25rem 1rem;       /* little taller, narrower sides */
+    font-size: 1.05rem;          /* tiny bump for legibility      */
+    letter-spacing: .25px;
+}
+
+/* 3 ▸ make the focus/hover glow gentler */
+.mobile-nav a:hover{
+    background: rgba(255,255,255,.06);   /* lighter highlight          */
+}
+
+/* 4 ▸ optional: smooth motion on open/close */
+.mobile-nav{
+    /* if you want the slide to feel silkier */
+    transition: transform .35s cubic-bezier(.25,.8,.25,1);
+}
+
 
 

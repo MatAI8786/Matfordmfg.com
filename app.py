@@ -28,5 +28,9 @@ def contact():
 def mori_machines():
     return render_template("mori_machines.html")
 
+@app.route("/test_hero")              
+def test_hero():
+    return render_template("test_hero.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
