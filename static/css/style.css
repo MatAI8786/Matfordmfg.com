@@ -731,5 +731,76 @@ main > .video-hero {
     transition: transform .35s cubic-bezier(.25,.8,.25,1);
 }
 
+/* ── PRODUCT HEROES  (Landscape list) ─────────────────────────── */
+.product-heroes-grid {
+  display: grid;
+  grid-template-columns: 1fr;         /* ONE card per row on desktop */
+  gap: 2.5rem;
+  margin: 4rem auto;
+  width: 100%;
+  max-width: 1200px;                  /* feel free to raise/lower */
+  padding: 0 2rem;
+}
 
+.product-heroes-grid .solo-hero {
+  background-color: rgba(10, 61, 98, 0.35);  /* darker blue */
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  display: flex;                    /* ← landscape: image + copy side-by-side */
+  align-items: center;
+  padding: 2.5rem 3rem;
+  overflow: visible;
+}
 
+.product-heroes-grid .solo-hero__image {
+  flex: 0 0 260px;                  /* fix image column width */
+  max-width: 260px;
+  margin-right: 2rem;
+}
+
+.product-heroes-grid .solo-hero__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: center;
+  transform: scale(1.6);            /*  ≈ 60 % larger than source */
+}
+
+.product-heroes-grid .solo-hero__copy {
+  flex: 1 1 auto;
+  color: #fff;
+}
+
+.product-heroes-grid .solo-hero__copy h2 {
+  font-size: 3.2rem;                /* ≈ 5× bigger than earlier */
+  margin: 0 0 1rem;
+  line-height: 1.1;
+}
+
+.product-heroes-grid .solo-hero__copy p {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  max-width: 40ch;
+}
+
+/* kill any buttons that might still exist */
+.product-heroes-grid .solo-hero__copy .btn { display:none }
+
+/* ── Mobile: stack image above copy  ── */
+@media (max-width: 768px) {
+  .product-heroes-grid {
+    padding: 0 1rem;
+  }
+  .product-heroes-grid .solo-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .product-heroes-grid .solo-hero__image {
+    margin: 0 0 1.5rem;
+  }
+  .product-heroes-grid .solo-hero__image img {
+    transform: scale(1.3);          /* smaller on phones */
+  }
+  .product-heroes-grid .solo-hero__copy h2 { font-size: 2.4rem }
+  .product-heroes-grid .solo-hero__copy p  { font-size: 1.1rem }
+}

@@ -20,5 +20,42 @@
 {% endblock %}
 
 {% block content %}
-  <!-- rest of your HOME page content here -->
+   <!-- ── Product Trio Under Video Hero ── -->
+  <section class="product-heroes-grid">
+    <!-- Card 1 -->
+    <div class="solo-hero">
+      <div class="solo-hero__image">
+        <img src="{{ url_for('static', filename='images/heros/part3_circle.png') }}"
+             alt="Precision flange assemblies">
+      </div>
+      <div class="solo-hero__copy">
+        <h3>CNC-Turned Flange</h3>
+        <p>ISO-certified flange housing, precision-machined for leak-free fit.</p>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="solo-hero">
+      <div class="solo-hero__image">
+        <img src="{{ url_for('static', filename='images/heros/part4_circle.png') }}"
+             alt="Set of turned pins">
+      </div>
+      <div class="solo-hero__copy">
+        <h3>Precision Pins</h3>
+        <p>Custom dowel and spring pins, tolerances to ±0.005 mm.</p>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="solo-hero">
+      <div class="solo-hero__image">
+        <img src="{{ url_for('static', filename='images/heros/part5_circle.png') }}"
+             alt="Ball stud components">
+      </div>
+      <div class="solo-hero__copy">
+        <h3>Ball Studs</h3>
+        <p>Durable ball-end fittings for high-precision assembly work.</p>
+      </div>
+    </div>
+  </section>
+  <!-- ── End Product Trio ── -->
+>
 {% endblock %}
