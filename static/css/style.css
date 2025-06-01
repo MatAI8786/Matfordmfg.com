@@ -861,3 +861,55 @@ main > .video-hero {
     padding-left: .25rem;
   }
 }
+
+/* ─────────── PRODUCT-HERO TYPOGRAPHY (FINAL OVERRIDE) ─────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap'); /* punchy title  */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap'); /* crisp body  */
+
+/* headline – any <h2> or <h3> sitting directly inside .solo-hero__copy */
+.product-heroes-grid .solo-hero__copy > h2,
+.product-heroes-grid .solo-hero__copy > h3 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2.3rem, 5vw, 3.6rem);   /* responsive but always larger than body */
+  color: #ffffff;                          /* pure white */
+  text-shadow: 0 4px 10px rgba(0,0,0,.55); /* punchy contrast on dark BG */
+  margin: 0 0 .6rem;
+  letter-spacing: 0.3px;
+}
+
+/* sub-text paragraph */
+.product-heroes-grid .solo-hero__copy > p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #cfd6e8;                          /* light grey, darker than title */
+  max-width: 60ch;
+  text-shadow: 0 2px 5px rgba(0,0,0,.35);
+}
+
+/* ensure the copy column never shrinks too much on wide screens */
+@media (min-width: 992px) {
+  .product-heroes-grid .solo-hero__copy {
+    padding-left: .25rem;
+  }
+}
+
+/* ── PRODUCT-HERO  •  FINAL SIZE + WHITE COPY ───────────────────── */
+
+/* 1 ▸ let the card grow vertically with content                */
+.product-heroes-grid .solo-hero{
+  height: auto;           /* kill fixed 280-px height      */
+  padding-top: 0.5rem;    /* a little extra breathing room */
+  padding-bottom: 0.5rem;
+}
+
+/* 2 ▸ make paragraph text pure-white (same shadow as title)    */
+.product-heroes-grid .solo-hero__copy > p{
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0,0,0,.45);
+}
+
+/* (No other rules touched – circle sizes, layout, fonts stay the same) */
