@@ -913,3 +913,56 @@ main > .video-hero {
 }
 
 /* (No other rules touched – circle sizes, layout, fonts stay the same) */
+
+/* ── PRODUCT-HERO • tighten vertical spacing ───────────────────────── */
+
+.product-heroes-grid{
+  gap: 0.75rem;          /* ↓ was 1.25rem – cards sit nearer */
+}
+
+/* remove any leftover top / bottom margin a card may have picked up */
+.product-heroes-grid .solo-hero{
+  margin-block: 0;       /* margin-top & margin-bottom → 0   */
+}
+
+/* optional: on mobile make them even tighter */
+@media (max-width: 768px){
+  .product-heroes-grid{ gap: 0.5rem; }
+}
+
+/* ── shrink the gap under the video hero ───────────────────────────── */
+.video-hero + .product-heroes-grid{ margin-top: .5rem !important; }
+
+
+/*=================*/
+/*  FINAL SPACING  */
+/*=================*/
+
+/* A ▸ kill the 4 rem top padding on <main> but keep the side breathing-room */
+main {
+    padding-top: 1.25rem !important;   /* or 0 if you truly want zero */
+}
+
+/* B ▸ pack cards tighter */
+.product-heroes-grid { gap: .4rem !important; }   /* ≈6–7 px */
+
+/* C ▸ strip any leftover margin that sneaks in from the old .solo-hero rule */
+.product-heroes-grid .solo-hero {
+    margin: 0 !important;              /* all four sides */
+}
+
+/* (optional) keep things readable on mobile */
+@media (max-width: 768px){
+    .product-heroes-grid{ gap: .25rem !important; }
+    main{ padding-top: .75rem !important; }
+}
+
+/* put this directly after—or instead of—the .4rem line */
+.product-heroes-grid{
+  gap: 1rem !important;      /* ≈16 px – same as the top offset */
+}
+
+/* keep the tighter spacing on phones, if you like */
+@media (max-width:768px){
+  .product-heroes-grid{ gap: .6rem !important; }
+}
