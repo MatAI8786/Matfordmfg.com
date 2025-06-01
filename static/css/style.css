@@ -966,3 +966,158 @@ main {
 @media (max-width:768px){
   .product-heroes-grid{ gap: .6rem !important; }
 }
+
+
+/* ─────────────────  SERVICES HERO  ───────────────── */
+.services-hero{
+  position:relative;
+  width:100%;
+  min-height:60vh;
+  padding:4rem 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  /* brand-blue overlay + photo */
+  background:
+    linear-gradient(rgba(10,61,98,.90),rgba(10,61,98,.70)),
+    url('/static/images/services_bg.webp') center / cover no-repeat;
+}
+
+.services-hero_content{
+  position:relative;           /* sits above overlay */
+  z-index:1;
+  max-width:1200px;
+  width:100%;
+  text-align:center;
+  color:#fff;
+}
+
+.services-hero_title{
+  font: clamp(2rem,4vw,3rem) 'Oswald',sans-serif;
+  margin:0 0 2rem;
+  line-height:1.15;
+  text-shadow:0 3px 8px rgba(0,0,0,.5);
+}
+
+.services-hero_grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr); /* two equal cols */
+  gap:2rem;
+}
+
+.services-hero_col h2{
+  font:600 1.5rem/1.2 'Oswald',sans-serif;
+  margin:0 0 .75rem;
+}
+
+.services-hero_col p{
+  font:1.05rem/1.55 'Inter',sans-serif;
+  max-width:38ch;
+  margin:0 auto;
+  color:#eaf3ff;                                /* very-light grey */
+  text-shadow:0 2px 5px rgba(0,0,0,.4);
+}
+
+/* ----------  Mobile (≤768 px)  ---------- */
+@media (max-width:768px){
+  .services-hero{ padding:3rem 1.25rem; }
+
+  .services-hero_grid{
+    grid-template-columns:1fr;  /* stack */
+  }
+
+  .services-hero_col p{ max-width:unset; }
+}
+
+/* ─────────  SERVICES HERO  (v2 – matches home cards)  ───────── */
+.services-hero{
+  /* size & layout */
+  width:100%;
+  min-height:60vh;
+  padding:4rem 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  /* visual skin – same corner & shadow as product heroes */
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+
+  /* blue tint + photo */
+  background:
+    linear-gradient(rgba(10,61,98,.90),rgba(10,61,98,.70)),
+    url('/static/images/services_bg.webp') center / cover no-repeat;
+}
+
+/* inner wrapper keeps text from hugging edges and centres card */
+.services-hero_content{
+  max-width:1200px;
+  width:100%;
+  margin-inline:auto;          /* fixes mobile “cut-off” issue   */
+  text-align:center;
+  color:#fff;
+}
+
+/* headline */
+.services-hero_title{
+  font: clamp(2.1rem,4.5vw,3.4rem) 'Oswald',sans-serif;
+  margin:0 0 2.25rem;
+  line-height:1.15;
+  text-shadow:0 4px 10px rgba(0,0,0,.55);
+}
+
+/* two-column grid */
+.services-hero_grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:2rem;
+}
+
+/* sub-heads + body copy */
+.services-hero_col h2{
+  font:600 1.6rem/1.2 'Oswald',sans-serif;
+  margin:0 0 .85rem;
+  color:#ffffff;
+  text-shadow:0 3px 6px rgba(0,0,0,.45);
+}
+.services-hero_col p{
+  font: 1.05rem/1.6 'Inter',sans-serif;
+  color:#eaf3ff;
+  max-width:40ch;
+  margin:0 auto;
+  text-shadow:0 2px 5px rgba(0,0,0,.4);
+}
+
+/* ———  Mobile  ≤ 768 px ——— */
+@media (max-width:768px){
+  .services-hero{ padding:3rem 1.25rem; }
+  .services-hero_grid{ grid-template-columns:1fr; }
+  .services-hero_col p{ max-width:unset; }
+}
+
+/* ── SERVICES-HERO • keep card inside the viewport & stop RHS clipping ───────── */
+
+/* 1 ▸ be absolutely sure the hero’s own padding stays *inside* the 100 % width   */
+.services-hero{
+    box-sizing: border-box;      /* width now honours its left / right padding  */
+    width: 100%;                 /* prevents accidental 101 % width on some OSs */
+}
+
+/* 2 ▸ give the inner wrapper a hard max-width that also respects page padding   */
+.services-hero_content{
+    max-width: calc(100% - 3rem);/* 1.5 rem L/R = same white rail as other cards*/
+    margin-inline: auto;         /* true centring, no sneaky overflow           */
+}
+
+/* 3 ▸ drop to a single column sooner (tablets sometimes sit at 769-991 px)     */
+@media (max-width: 992px){
+    .services-hero_grid{ grid-template-columns: 1fr; }
+}
+
+/* 4 ▸ final safety-net: never let the card itself overshoot on tiny screens     */
+@media (max-width: 480px){
+    .services-hero{ padding: 2.5rem 1rem; }
+    .services-hero_title{ font-size: 1.9rem; }
+}

@@ -1,13 +1,37 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
+  <!-- Services hero -->
+  <section class="services-hero">
+    <!-- tinted background is handled in CSS, so this div is optional -->
+    <div class="services-hero_content">
+      <h1 class="services-hero_title">Precision CNC &amp; Turnkey Finishing</h1>
 
-<!-- Hero Section with Background Image -->
-<div class="hero-section services-hero">
-    <div class="overlay">
-        <h1 class="animated-text">Our Services</h1>
-        <p class="animated-text">High-quality CNC machining for various industries.</p>
+      <div class="services-hero_grid">
+        <!-- ─ left column ─ -->
+        <div class="services-hero_col">
+          <h2>Full-Spectrum Machining</h2>
+          <p>
+            From quick-turn prototypes to small-batch production, Matford’s
+            NLX-series turning centres take parts from raw bar to finished
+            geometry in a single setup. Live-tool 4-axis milling, deep-hole
+            drilling and tight in-house QC mean you get consistent accuracy —
+            and a lead time counted in days, not weeks.
+          </p>
+        </div>
+
+        <!-- ─ right column ─ -->
+        <div class="services-hero_col">
+          <h2>Finish, Pack &amp; Deliver</h2>
+          <p>
+            Need more than metal-cutting? We coordinate heat-treat (harden,
+            temper, nitride), coatings (zinc, Geomet®, Xylan®) and full
+            press-work or welded sub-assemblies&thinsp;— then bundle matched
+            nuts, bolts and gaskets so every kit arrives production-ready at
+            your door, anywhere in the UK.
+          </p>
+        </div>
+      </div>
     </div>
-</div>
-
+  </section>
 {% endblock %}
