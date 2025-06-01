@@ -1375,3 +1375,62 @@ main > .mori-hero{
     width: 100%;           /* fill the space inside <main>      */
     margin-inline: 0;      /* true centring – no phantom offset */
 }
+
+/* ────────────────────────────────────────────── */
+/*    NEW: FONT AWESOME BUTTON / CTA STYLES     */
+/* ────────────────────────────────────────────── */
+
+/* 1. The big red pill (Request Free Consultation) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background-color: #d32b2b;    /* Matford’s brand red */
+  color: #ffffff;               /* white text */
+  padding: 0.9rem 2.4rem;        /* vertically/horizontally comfortable */
+  border: none;
+  border-radius: 4px;           /* slightly rounded corners */
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;           /* a bit larger than body copy */
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-primary i {
+  margin-right: 0.5rem;    /* space between icon and text */
+  font-size: 1.2rem;       /* slightly bigger icon */
+}
+
+.btn-primary:hover {
+  background-color: #b02828;    /* slightly darker on hover */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* 2. Circular icon buttons (phone / envelope) */
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;                /* square touch/tap area */
+  height: 48px;
+  border-radius: 50%;         /* circle */
+  background-color: #ffffff;  /* white circle */
+  color: var(--blue);         /* Matford’s brand blue (#0a3d62) */
+  text-decoration: none;
+  font-size: 1.2rem;          /* Font Awesome icon size: 1.2rem */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  margin-left: 0.75rem;       /* spacing from the pill (and between icons) */
+  transition: all 0.25s ease;
+}
+
+.icon-link i {
+  line-height: 1;             /* ensure perfect vertical centering */
+}
+
+.icon-link:hover {
+  background-color: var(--blue); /* turn circle blue on hover */
+  color: #ffffff;                /* icon turns white */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}

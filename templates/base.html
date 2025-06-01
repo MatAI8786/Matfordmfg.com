@@ -1,31 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}Matford Manufacturing{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400" rel="stylesheet">
+
+  <!-- Your main stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+  <!-- (optional) Google Font or Material Symbols if you still need them -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400"
+    rel="stylesheet"
+  />
+
+  <!-- ─── FONT AWESOME 6.3 CDN (No SRI/CORS for now) ─── -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+  />
+  <!-- ───────────────────────────────────────────────────── -->
+
 </head>
 <body>
-
   <!-- ===== MASTHEAD / NAV ===== -->
   <header class="masthead">
     <div class="banner-inner">
+      <!-- ─── LEFT: Logo ─── -->
       <div class="banner-logo">
-        <img src="{{ url_for('static', filename='images/matford_logo.svg') }}"
-             alt="Matford Manufacturing">
+        <img
+          src="{{ url_for('static', filename='images/matford_logo.svg') }}"
+          alt="Matford Manufacturing"
+        />
       </div>
+
+      <!-- ─── RIGHT: CTA + Phone/Email Icons ─── -->
       <div class="banner-cta">
-        <a class="btn btn-primary" href="{{ url_for('contact') }}">
-          Request Free Consultation Today!
+        <!-- Big red pill: “Request Free Consultation” -->
+        <a class="btn-primary" href="{{ url_for('contact') }}">
+          <i class="fa-solid fa-comments-dollar fa-lg"></i>
+          Request Free Consultation
         </a>
-        <a class="icon-link" href="tel:+441234567890"><span class="icon-phone"></span></a>
-        <a class="icon-link" href="mailto:info@matfordmfg.com"><span class="icon-mail"></span></a>
+
+        <!-- Phone circle button -->
+        <a
+          class="icon-link"
+          href="tel:+441234567890"
+          aria-label="Call Us"
+          title="Call Us"
+        >
+          <i class="fa-solid fa-phone"></i>
+        </a>
+
+        <!-- Email circle button -->
+        <a
+          class="icon-link"
+          href="mailto:info@matfordmfg.com"
+          aria-label="Email Us"
+          title="Email Us"
+        >
+          <i class="fa-solid fa-envelope"></i>
+        </a>
       </div>
     </div>
   </header>
 
+  <!-- ─── PRIMARY NAVIGATION (Desktop) ─── -->
   <nav>
     <ul id="nav-menu">
       <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -36,23 +76,23 @@
     </ul>
   </nav>
 
-  <!-- Hamburger toggle -->
-<button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
-  <span class="nav-toggle__bar"></span>
-</button>
+  <!-- ─── HAMBURGER TOGGLE FOR MOBILE ─── -->
+  <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+    <span class="nav-toggle__bar"></span>
+  </button>
 
-<!-- Mobile drawer -->
-<nav class="mobile-nav" aria-label="Mobile">
-  <ul>
-    <li><a href="{{ url_for('home') }}">Home</a></li>
-    <li><a href="{{ url_for('about') }}">About</a></li>
-    <li><a href="{{ url_for('services') }}">Services</a></li>
-    <li><a href="{{ url_for('mori_machines') }}">Mori Machines</a></li>
-    <li><a href="{{ url_for('contact') }}">Contact</a></li>
-  </ul>
-</nav>
+  <!-- ─── MOBILE DRAWER NAV ─── -->
+  <nav class="mobile-nav" aria-label="Mobile">
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('services') }}">Services</a></li>
+      <li><a href="{{ url_for('mori_machines') }}">Mori Machines</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+    </ul>
+  </nav>
 
-  {# ⬇️ Hero block comes _before_ the main padding ⬇️ #}
+  {# ─── Hero Block (Injected by Child Templates) ─── #}
   {% block hero %}{% endblock %}
 
   <main>
@@ -63,6 +103,6 @@
     <p>&copy; 2025 Matford Manufacturing. All rights reserved.</p>
   </footer>
 
- <script src="{{ url_for('static', filename='js/mobile-nav.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/mobile-nav.js') }}"></script>
 </body>
 </html>
