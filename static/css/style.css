@@ -1121,3 +1121,257 @@ main {
     .services-hero{ padding: 2.5rem 1rem; }
     .services-hero_title{ font-size: 1.9rem; }
 }
+
+/* ─── MORI MACHINES HERO  (re-uses global fonts / colours) ─────────────────── */
+
+.mori-hero{
+    position: relative;
+    width: 100%;
+    min-height: 70vh;                 /* same visual weight as other heroes   */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    background:
+        linear-gradient(rgba(10,61,98,.88),rgba(10,61,98,.88)),
+        url('/static/images/mori_page_bg.jpg') center/cover no-repeat;
+}
+
+/* keeps white rails consistent with other pages */
+.mori-hero_content{
+    max-width: calc(100% - 3rem); /* mirrors 1.5 rem rails each side */
+    margin-inline: auto;
+    text-align: center;
+    color: #fff;
+}
+
+.mori-hero_title{
+    font: 700 clamp(2rem,4vw,3rem) 'Oswald', sans-serif;
+    margin-bottom: 2rem;
+    text-shadow: 0 3px 6px rgba(0,0,0,.45);
+}
+
+.mori-hero_points{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1.75rem 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mori-hero_points h3{
+    font: 700 1.4rem 'Oswald', sans-serif;
+    margin: 0 0 .35rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,.4);
+}
+
+.mori-hero_points p{
+    font: 1rem/1.55 'Inter', sans-serif;
+    margin: 0;
+    color: #ecf3ff;                   /* light tint for hierarchy            */
+    text-shadow: 0 2px 4px rgba(0,0,0,.3);
+}
+
+/* ——— Responsive: stack points on narrow screens ——— */
+@media (max-width: 768px){
+    .mori-hero{
+        padding: 3rem 1rem;
+    }
+    .mori-hero_points{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ─── MORI MACHINES HERO  ─────────────────────────────────── */
+
+.mori-hero{
+  position:relative;
+  width:100%;
+  min-height:70vh;
+  padding:4rem 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+
+  /* blue overlay + machine photo */
+  background:
+    linear-gradient(rgba(10,61,98,.88),rgba(10,61,98,.88)),
+    url("/static/images/mori_page_bg.jpg") center/cover no-repeat;
+}
+
+.mori-hero_content{
+  max-width:calc(100% - 3rem);   /* leaves 1.5 rem white rails */
+  margin-inline:auto;
+  text-align:center;
+  color:#fff;
+}
+
+.mori-hero_title{
+  font:700 clamp(2rem,4vw,3rem) "Oswald",sans-serif;
+  margin-bottom:2rem;
+  text-shadow:0 3px 6px rgba(0,0,0,.45);
+}
+
+.mori-hero_points{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.75rem 2.5rem;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.mori-hero_points h3{
+  font:700 1.4rem "Oswald",sans-serif;
+  margin:0 0 .35rem;
+  text-shadow:0 2px 4px rgba(0,0,0,.4);
+}
+
+.mori-hero_points p{
+  font:1rem/1.55 "Inter",sans-serif;
+  margin:0;
+  color:#ecf3ff;
+  text-shadow:0 2px 4px rgba(0,0,0,.3);
+}
+
+/* stack points on tablets & phones */
+@media(max-width:768px){
+  .mori-hero{ padding:3rem 1rem; }
+  .mori-hero_points{ grid-template-columns:1fr; }
+}
+
+/* ─── MORI-HERO  ·  force pure-white copy ───────────────────────────── */
+
+/* headline */
+.mori-hero_title{
+    color: #ffffff;                               /* ← you were inheriting #000 */
+    text-shadow: 0 4px 10px rgba(0,0,0,.55);
+}
+
+/* the four “advantage” call-outs */
+.mori-hero_points h3{
+    color:#ffffff;
+    text-shadow:0 3px 6px rgba(0,0,0,.45);
+}
+.mori-hero_points p{
+    color:#eaf3ff;                               /* very-light grey below title */
+    text-shadow:0 2px 5px rgba(0,0,0,.35);
+}
+
+/* ── MORI HERO  ·  headline punch-up ───────────────────────────────── */
+.mori-hero_title{
+    font-size: clamp(2.8rem, 6vw, 4.25rem);   /* bigger & fluid      */
+    font-style: italic;                       /* subtle angle        */
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 5px 12px rgba(0,0,0,.55);
+    margin-bottom: 2.25rem;                   /* breath below title  */
+}
+
+/* ── fix RH-side cropping inside white “rails” ─────────────────────── */
+main > .mori-hero{                            /* ONLY the top hero   */
+    width: calc(100% - 4rem);                 /* 2 rem L  +  2 rem R */
+    margin-inline: auto;                      /* centre in the rails */
+}
+
+/* same logic for mobile, where <main> uses 0 .5 rem side-padding */
+@media(max-width: 768px){
+    main > .mori-hero{ width: calc(100% - 1rem); }
+}
+
+/* ── Mobile “NLX Super-Hero” fallback  ·  ≤ 640 px ─────────────────── */
+@media (max-width: 640px){
+
+  /* 1 ▸ friendlier type-scale */
+  .mori-hero_title{
+      font-size: clamp(1.8rem, 7vw + .5rem, 3rem);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+  }
+  .mori-hero_box h3{          /* the four sub-heads    */
+      font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+      margin-bottom: .35rem;
+  }
+  .mori-hero_box p{
+      font-size: clamp(.9rem, 3.8vw, 1rem);
+      line-height: 1.45;
+  }
+
+  /* 2 ▸ turn the 2×2 grid into one column */
+  .mori-hero_grid{
+      grid-template-columns: 1fr;   /* stack               */
+      row-gap: 1.5rem;              /* nice breathing room */
+      text-align: center;
+      max-width: 32rem;             /* keeps copy measure  */
+      margin-inline: auto;          /* true centre         */
+  }
+
+  /* 3 ▸ let the blue card grow vertically */
+  .mori-hero{
+      height: auto;                 /* no fixed var height */
+      padding: 2.5rem 1.25rem;      /* inward side padding */
+  }
+}
+
+/* ── MORI-HERO ▸ keep blue card perfectly centred inside the white rails ── */
+main{
+    /* same white rails on every screen – you already set 2 rem on ≥768 px
+       and .5 rem on phones.  We’ll read those values and let CSS do the math. */
+    padding-inline: clamp(.5rem, 2vw + .25rem, 2rem);
+}
+
+main > .mori-hero{
+    box-sizing: border-box;          /* honour its own side-padding          */
+    width: 100%;                     /* fill the space inside main           */
+    margin-inline: 0;                /* no phantom margins                   */
+}
+
+/* tighten the *internal* blue card on very small phones so it never feels cramped */
+@media (max-width: 480px){
+    .mori-hero{
+        padding-inline: 1rem;        /* was 1.25 rem – buys you a few pixels */
+    }
+}
+
+/* ─── MORI-HERO • final mobile / tablet fix ───────────────────────── */
+
+@media (max-width: 768px){
+
+  /* 1 ▸ let the blue card grow to fit its content */
+  .mori-hero{
+      min-height: auto;        /* kill the 70 vh floor         */
+      height: auto;            /* no artificial cap            */
+      padding: 2.75rem 1.25rem;/* snug inward rails            */
+  }
+
+  /* 2 ▸ keep the four “advantage” boxes nicely spaced */
+  .mori-hero_points{
+      grid-template-columns: 1fr;   /* already stacked ≤640,        */
+      row-gap: 1.25rem;             /* but roomier on 641-768 px     */
+  }
+
+  /* 3 ▸ fine-tune headline so it never wraps awkwardly */
+  .mori-hero_title{
+      font-size: clamp(2.2rem, 6vw, 3.1rem);
+      line-height: 1.25;
+  }
+}
+
+/* ── always centre the card inside the white rails (all widths) ── */
+main{
+    /* you already set L/R padding with clamp(.5rem … 2rem);      */
+    /* box-sizing keeps that padding *inside* the declared width. */
+    box-sizing: border-box;
+}
+
+main > .mori-hero{
+    width: 100%;           /* fill the space inside <main>      */
+    margin-inline: 0;      /* true centring – no phantom offset */
+}

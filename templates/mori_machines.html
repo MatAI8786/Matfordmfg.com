@@ -1,15 +1,42 @@
 {% extends "base.html" %}
-
 {% block content %}
 
-<!-- Hero Section with Animated Image -->
-<div class="mori-hero">
-    <div class="mori-overlay">
-        <h1>Mori Seiki Precision</h1>
-        <p>At Matford Manufacturing, we use Mori Seiki NLX series machines to deliver high-precision components 
-           with advanced automation. This ensures consistency, efficiency, and top-quality results for our customers.</p>
-    </div>
-    <img src="{{ url_for('static', filename='images/mori.png') }}" class="mori-image" alt="Mori Seiki Machine">
-</div>
+<!-- ─── Mori Machines “Super-Hero” ─────────────────────────── -->
+<section class="mori-hero">
+  <div class="mori-hero_content">
+
+    <h2 class="mori-hero_title">
+      NLX-Series — Performance Without the Wait
+    </h2>
+
+    <ul class="mori-hero_points">
+      <li>
+        <h3>Multi-Axis, One Setup</h3>
+        <p>Live-tool turrets mill, drill &amp; tap on the same chuck-up, slashing
+           fixture time and tolerance stack-ups.</p>
+      </li>
+
+      <li>
+        <h3>Automated Lights-Out Runs</h3>
+        <p>Bar-feed, parts catcher and cell monitoring cut through the
+           night, so urgent jobs are ready when you start work.</p>
+      </li>
+
+      <li>
+        <h3>µ-Level Accuracy Every Part</h3>
+        <p>Glass-scale feedback and in-cut probing hold ±5 µm roundness and
+           0.01 mm positional true-position without tweaking.</p>
+      </li>
+
+      <li>
+        <h3>Material-Agnostic Capability</h3>
+        <p>Rigid tapping and a 26 kW spindle chew through inconel, duplex and
+           hardened steels as quickly as 6082 aluminium.</p>
+      </li>
+    </ul>
+
+  </div>
+</section>
+<!-- ─── End Mori-Machines hero ─────────────────────────────── -->
 
 {% endblock %}
