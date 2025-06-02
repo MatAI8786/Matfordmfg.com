@@ -1434,3 +1434,137 @@ main > .mori-hero{
   color: #ffffff;                /* icon turns white */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
+
+/* ─── Consultation Modal Overlay ────────────────────────────────────────────────────── */
+
+.modal-overlay {
+  /* Cover entire screen */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff; /* or a tinted white like rgba(255,255,255,0.95) */
+  border-radius: 8px;
+  width: clamp(320px, 90%, 600px);
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--blue); /* or #0a3d62 */
+}
+
+/* Form fields inside the modal */
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--blue);
+  text-align: center;
+}
+
+.modal-content .form-group {
+  margin: 1rem 0;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea,
+.modal-content input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.modal-content textarea {
+  resize: vertical;
+}
+
+/* The “Send Request” button (big red pill) inside modal */
+.modal-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* If your .btn-primary is a blue pill, override to red: */
+  background: #e63946; /* red */
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.modal-submit:hover {
+  background: #d62839;
+}
+
+/* “Thank you” message, same modal-content box */
+.modal-success {
+  text-align: center;
+}
+
+.modal-success p {
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.modal-success .modal-close {
+  background: var(--blue);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────── */
+
+/* ─── Override on smaller screens if needed ───────────────────────────────────────── */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1rem;
+    width: 95%;
+  }
+
+  .modal-content h2 {
+    font-size: 1.25rem;
+  }
+
+  .modal-submit {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
