@@ -14,13 +14,11 @@
     rel="stylesheet"
   />
 
-  <!-- ─── FONT AWESOME 6.3 CDN (No SRI/CORS for now) ─── -->
+  <!-- ─── FONT AWESOME 6.3 CDN ─── -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
   />
-  <!-- ───────────────────────────────────────────────────── -->
-
 </head>
 <body>
   <!-- ===== MASTHEAD / NAV ===== -->
@@ -37,11 +35,9 @@
       <!-- ─── RIGHT: CTA + Phone/Email Icons ─── -->
       <div class="banner-cta">
         <!-- Big red pill: “Request Free Consultation” -->
-        <a id="open-consultation-btn" class="btn-primary" href="#">
+        <a id="open-consult-btn" class="btn-primary" href="#">
           <i class="fa-solid fa-comments-dollar fa-lg"></i>
           Request Free Consultation
-        </a>
-
         </a>
 
         <!-- Phone circle button -->
@@ -95,69 +91,80 @@
   </nav>
 
   <!-- ─── CONSULTATION REQUEST MODAL (start hidden) ─── -->
-<div id="consultation-modal" class="modal-overlay hidden">
-  <div class="modal-content">
-    <button class="modal-close" aria-label="Close">&times;</button>
+  <div id="consultation-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
 
-    <h2>Request Free Consultation</h2>
-    <form
-      id="consultForm"
-      action="{{ url_for('request_quote') }}"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <div class="form-group">
-        <label for="consult_title">Subject</label>
-        <input
-          type="text"
-          id="consult_title"
-          name="title"
-          placeholder="Enter a brief subject"
-          required
-        />
+      <h2>Request Free Consultation</h2>
+      <form
+        id="consultForm"
+        action="{{ url_for('request_quote') }}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <label for="consult_title">Subject</label>
+          <input
+            type="text"
+            id="consult_title"
+            name="title"
+            placeholder="Enter a brief subject"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="consult_body">Message</label>
+          <textarea
+            id="consult_body"
+            name="body"
+            rows="4"
+            placeholder="Describe your request in detail…"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="consult_files">Attachments (optional)</label>
+          <input
+            type="file"
+            id="consult_files"
+            name="attachments"
+            multiple
+            accept="image/*,.pdf,.doc,.docx"
+          />
+          <small class="note">
+            You may attach images, PDFs, Word docs (up to 10 MB total).
+          </small>
+        </div>
+
+        <button type="submit" class="btn-primary modal-submit">
+          <i class="fa-solid fa-paper-plane"></i>
+          Send Request
+        </button>
+      </form>
+
+      <!-- Success message (hidden by default) -->
+      <div id="consult_success" class="modal-success hidden">
+        <h3>Thank you!</h3>
+        <p>
+          Your consultation request has been sent. We will be in touch shortly.
+        </p>
+        <button class="btn-primary modal-close">Close</button>
       </div>
 
-      <div class="form-group">
-        <label for="consult_body">Message</label>
-        <textarea
-          id="consult_body"
-          name="body"
-          rows="4"
-          placeholder="Describe your request in detail…"
-          required
-        ></textarea>
+      <!-- Error message (hidden by default) -->
+      <div id="consult_error" class="modal-error hidden">
+        <h3>Something went wrong</h3>
+        <p>
+          Your consultation request could not be sent.
+          Please try again later, or contact us directly by phone or email.
+        </p>
+        <button class="btn-primary modal-close">Close</button>
       </div>
-
-      <div class="form-group">
-        <label for="consult_files">Attachments (optional)</label>
-        <input
-          type="file"
-          id="consult_files"
-          name="attachments"
-          multiple
-          accept="image/*,.pdf,.doc,.docx"
-        />
-        <small class="note">
-          You may attach images, PDFs, Word docs (up to 10 MB total).
-        </small>
-      </div>
-
-      <button type="submit" class="btn-primary modal-submit">
-        <i class="fa-solid fa-paper-plane"></i>
-        Send Request
-      </button>
-    </form>
-
-    <div id="consult_success" class="modal-success hidden">
-      <h3>Thank you!</h3>
-      <p>
-        Your consultation request has been sent. We will be in touch shortly.
-      </p>
-      <button class="btn-primary modal-close">Close</button>
     </div>
   </div>
-</div>
-<!-- ─── CONSULTATION REQUEST MODAL (end) ─── -->
+  <!-- ─── CONSULTATION REQUEST MODAL (end) ─── -->
 
   {% block hero %}{% endblock %}
 

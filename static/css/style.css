@@ -1568,3 +1568,44 @@ main > .mori-hero{
   }
 }
 
+/* ─── Consultation Modal Error Styling ───────────────────────────────────────── */
+
+/* Hidden utility (if you don’t already have it): */
+.hidden {
+  display: none !important;
+}
+
+/* Style for the error box inside the modal */
+.modal-error {
+  display: none; /* hidden until we remove .hidden */
+  padding: 2rem;
+  border-left: 5px solid #d8000c;   /* bold red stripe on the left */
+  background-color: #ffd2d2;        /* very light red background */
+  color: #333;                       /* dark text for readability */
+  margin-top: 1rem;
+}
+
+.modal-error h3 {
+  margin-top: 0;
+  color: #d8000c; /* red heading */
+}
+
+.modal-error p {
+  margin: 0.5rem 0 1rem 0;
+  line-height: 1.4;
+}
+
+.modal-error .modal-close {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #d8000c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-error .modal-close:hover {
+  background-color: #b30000;
+}
+

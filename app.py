@@ -13,6 +13,9 @@ from flask import (
 )
 from werkzeug.utils import secure_filename
 from email.message import EmailMessage
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # ─── CONFIGURATION ────────────────────────────────────────────────────────────────
 

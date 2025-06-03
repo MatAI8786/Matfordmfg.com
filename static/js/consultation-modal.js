@@ -1,29 +1,41 @@
 // static/js/consultation-modal.js
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Grab the modal elements
-  const modalOverlay = document.getElementById("consultation-modal");
-  const openBtn = document.getElementById("open-consultation-btn");
-  const closeButtons = modalOverlay.querySelectorAll(".modal-close");
-  const consultForm = document.getElementById("consultForm");
-  const successBox = document.getElementById("consult_success");
+  // — Grab the modal elements —
+  const modalOverlay    = document.getElementById("consultation-modal");
+  const openBtn         = document.getElementById("open-consult-btn");
+  const closeButtons    = modalOverlay.querySelectorAll(".modal-close");
+  const consultForm     = document.getElementById("consultForm");
+  const successBox      = document.getElementById("consult_success");
+  const errorBox        = document.getElementById("consult_error");
 
-  // 1) Show the modal when “Request Free Consultation” is clicked
-  openBtn.addEventListener("click", function () {
+  // — 1) Show the modal when “Request Free Consultation” is clicked —
+  openBtn.addEventListener("click", function (e) {
+    e.preventDefault();
     modalOverlay.classList.remove("hidden");
-    // Ensure form is visible if user opens again
-    consultForm.style.display = "block";
+
+    // Ensure the form is visible, and any messages are hidden
+    consultForm.classList.remove("hidden");
     successBox.classList.add("hidden");
+    errorBox.classList.add("hidden");
   });
 
-  // 2) Hide the modal when any “.modal-close” button is clicked
+  // — 2) Hide the modal when any “.modal-close” button is clicked —
+  function closeModal() {
+    modalOverlay.classList.add("hidden");
+
+    // Reset form inputs and hide both success and error boxes
+    consultForm.reset();
+    consultForm.classList.remove("hidden");
+    successBox.classList.add("hidden");
+    errorBox.classList.add("hidden");
+  }
+
   closeButtons.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      modalOverlay.classList.add("hidden");
-    });
+    btn.addEventListener("click", closeModal);
   });
 
-  // 3) Handle the form submission via AJAX (so we don’t navigate away)
+  // — 3) Handle the form submission via AJAX (so we don’t navigate away) —
   consultForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -31,22 +43,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetch(consultForm.action, {
       method: "POST",
-      body: formData,
+      body: formData
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === "ok") {
-          // Hide the form itself
-          consultForm.style.display = "none";
-          // Show the “thank you” block
-          successBox.classList.remove("hidden");
-        } else {
-          alert("There was an error sending your request. Please try again.");
+      .then((response) => {
+        // If status is not 2xx, treat it as an error
+        if (!response.ok) {
+          throw new Error("Server responded with " + response.status);
         }
+        return response.json();
       })
-      .catch((err) => {
-        console.error("Fetch error:", err);
-        alert("Network error. Please try again later.");
+      .then((data) => {
+        // Only show the success box if data.status === "OK"
+        consultForm.classList.add("hidden");
+        successBox.classList.remove("hidden");
+      })
+      .catch((error) => {
+        console.error("Form submission failed:", error);
+        consultForm.classList.add("hidden");
+        errorBox.classList.remove("hidden");
       });
   });
 });
