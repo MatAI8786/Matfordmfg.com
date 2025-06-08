@@ -1609,3 +1609,99 @@ main > .mori-hero{
   background-color: #b30000;
 }
 
+/* ─── Consultation Modal Overlay & Content — Revised ───────────────── */
+.modal-overlay {
+  /* fill the viewport and give a little padding so the modal never hugs the edges */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;                /* space around the modal */
+  box-sizing: border-box;       /* include that padding in the width/height */
+  
+  background: rgba(0, 0, 0, 0.6); /* darken the page behind */
+  
+  display: flex;
+  justify-content: center;      /* center horizontally */
+  align-items: center;          /* center vertically */
+  overflow-y: auto;             /* allow scrolling if screen is short */
+  z-index: 1000;
+}
+
+.modal-content {
+  /* brand-blue background, white text */
+  background: var(--blue);
+  color: #fff;
+  
+  /* width caps at 600px, but shrinks on small screens */
+  width: clamp(320px, 90%, 600px);
+  
+  /* include padding in that width */
+  box-sizing: border-box;
+  
+  /* inner spacing — note the extra top to clear the logo strip */
+  padding: 1.5rem;              
+  padding-top: 6rem;
+  
+  margin: auto;                 /* just in case, keep it centered */
+  border-radius: 8px;
+  position: relative;           /* for the close “X” */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+
+.modal-brand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+
+  /* only wrap the image, not the whole modal width */
+  width: auto;
+
+  /* height of your logo strip */
+  height: 6rem;
+
+  /* just a little side-padding so the logo isn’t jammed to the edge */
+  padding: 0 .75rem;
+
+  /* subtle tint behind the SVG */
+  background: rgba(0,0,0,0.15);
+
+  /* ensure it sits below the close button */
+  z-index: 1;
+}
+
+
+.modal-brand img {
+  /* blow the SVG up to fill the strip */
+  height: 6rem;
+  width: auto;
+}
+
+.modal-close {
+  /* keep that “×” crisp and white */
+  color: #fff;
+}
+
+.modal-content label {
+  color: #fff;
+  font-weight: 600;
+}
+
+.modal-content input,
+.modal-content textarea {
+  background: #fefefe;
+  color: #111;
+  border: 1px solid #fff;
+}
+
+.modal-submit {
+  background: #e63946; /* Matford red */
+  color: #fff;
+}
+
+.modal-submit:hover {
+  background: #d62839;
+}
+/* ───────────────────────────────────────────────────────────────── */
