@@ -102,50 +102,80 @@
     <button class="modal-close" aria-label="Close">&times;</button>
 
     <h2>Request Free Consultation</h2>
-    <form
-      id="consultForm"
-      action="{{ url_for('request_quote') }}"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <div class="form-group">
-        <label for="consult_title">Subject</label>
-        <input
-          type="text"
-          id="consult_title"
-          name="title"
-          placeholder="Enter a brief subject"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="consult_body">Message</label>
-        <textarea
-          id="consult_body"
-          name="body"
-          rows="4"
-          placeholder="Describe your request in detail…"
-          required
-        ></textarea>
-      </div>
-      <div class="form-group">
-        <label for="consult_files">Attachments (optional)</label>
-        <input
-          type="file"
-          id="consult_files"
-          name="attachments"
-          multiple
-          accept="image/*,.pdf,.doc,.docx"
-        />
-        <small class="note">
-          You may attach images, PDFs, Word docs (up to 10 MB total).
-        </small>
-      </div>
-      <button type="submit" class="btn-primary modal-submit">
-        <i class="fa-solid fa-paper-plane"></i>
-        Send Request
-      </button>
-    </form>
+<form
+  id="consultForm"
+  action="{{ url_for('request_quote') }}"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <!-- ── Email + Phone Side by Side ── -->
+  <div class="form-row">
+    <div class="form-group">
+      <label for="consult_email">Email address</label>
+      <input
+        type="email"
+        id="consult_email"
+        name="email"
+        placeholder="you@example.com"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="consult_phone">Contact number</label>
+      <input
+        type="tel"
+        id="consult_phone"
+        name="phone"
+        placeholder="+44 1234 567 890"
+      />
+    </div>
+  </div>
+
+  <!-- ── Subject ── -->
+  <div class="form-group">
+    <label for="consult_title">Subject</label>
+    <input
+      type="text"
+      id="consult_title"
+      name="title"
+      placeholder="Enter a brief subject"
+      required
+    />
+  </div>
+
+  <!-- ── Message ── -->
+  <div class="form-group">
+    <label for="consult_body">Message</label>
+    <textarea
+      id="consult_body"
+      name="body"
+      rows="4"
+      placeholder="Describe your request in detail…"
+      required
+    ></textarea>
+  </div>
+
+  <!-- ── Attachments ── -->
+  <div class="form-group">
+    <label for="consult_files">Attachments (optional)</label>
+    <input
+      type="file"
+      id="consult_files"
+      name="attachments"
+      multiple
+      accept="image/*,.pdf,.doc,.docx"
+    />
+    <small class="note">
+      You may attach images, PDFs, Word docs (up to 10 MB total).
+    </small>
+  </div>
+
+  <!-- ── Submit Button ── -->
+  <button type="submit" class="btn-primary modal-submit">
+    <i class="fa-solid fa-paper-plane"></i>
+    Send Request
+  </button>
+</form>
 
     <!-- Success message (hidden by default) -->
     <div id="consult_success" class="modal-success hidden">

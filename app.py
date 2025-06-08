@@ -2,6 +2,7 @@
 import os
 import tempfile
 import smtplib
+import re
 from flask import (
     Flask,
     render_template,
@@ -9,8 +10,10 @@ from flask import (
     redirect,
     url_for,
     jsonify,
-    flash
+    flash,
+    current_app
 )
+
 from werkzeug.utils import secure_filename
 from email.message import EmailMessage
 from dotenv import load_dotenv
@@ -35,6 +38,8 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "pdf", "doc", "docx", "txt"}
 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
+EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
 
 def allowed_file(filename):
@@ -84,20 +89,26 @@ def test_hero():
 
 @app.route("/request_quote", methods=["POST"])
 def request_quote():
-    """
-    Receives the AJAX POST from the “Request Free Consultation” modal:
-      - title    → subject line
-      - body     → detailed message
-      - attachments → zero or more files
-
-    Sends an email to a fixed recipient (e.g. your sales inbox), with any attachments,
-    then cleans up the temporary files and returns HTTP 200 (“OK”) on success.
-    """
-    # 1) Extract form fields
+    # 1) Extract & validate form fields
+    email = request.form.get("email", "").strip()
+    phone = request.form.get("phone", "").strip()
     title = request.form.get("title", "").strip()
-    body = request.form.get("body", "").strip()
+    body  = request.form.get("body", "").strip()
 
-    # 2) Handle file uploads
+    # Basic field validation
+    if not email or not EMAIL_REGEX.match(email):
+        return jsonify({"error": "Please enter a valid email address."}), 400
+    if not title:
+        return jsonify({"error": "Subject cannot be empty."}), 400
+    if not body:
+        return jsonify({"error": "Message cannot be empty."}), 400
+
+    # (Optional) loose phone check — uncomment if you want to enforce a pattern
+    # PHONE_REGEX = re.compile(r"^[0-9 +()-]{7,20}$")
+    # if phone and not PHONE_REGEX.match(phone):
+    #     return jsonify({"error": "Please enter a valid phone number."}), 400
+
+    # 2) Handle file uploads (unchanged)
     saved_files = []
     files = request.files.getlist("attachments")
     for file in files:
@@ -107,74 +118,52 @@ def request_quote():
             file.save(save_path)
             saved_files.append(save_path)
 
-    # 3) Build the email
-    #   - Make sure EMAIL_ADDRESS / EMAIL_PASSWORD are set in the environment
+    # 3) Check your email credentials
     if not EMAIL_ADDRESS or not EMAIL_PASSWORD:
-        # Missing configuration → return an error
-        return (
-            jsonify({"error": "Server email is not configured."}),
-            500,
-        )
+        return jsonify({"error": "Server email is not configured."}), 500
 
+    # 4) Build the email
     msg = EmailMessage()
     msg["Subject"] = f"New Consultation Request: {title}"
     msg["From"] = EMAIL_ADDRESS
-    # ← Replace this with whatever address you want to receive these requests
-    msg["To"] = "your_sales_inbox@matfordmfg.com"
+    msg["To"]   = "your_sales_inbox@matfordmfg.com"
     msg.set_content(
-        f"A new consultation request has arrived.\n\n"
+        f"New request from {email}\n"
+        f"Phone: {phone or 'n/a'}\n\n"
         f"Subject: {title}\n\n"
-        f"Message:\n{body}\n"
+        f"{body}\n"
     )
 
-    # Attach any uploaded files
-    for file_path in saved_files:
+    # 5) Attach uploaded files (unchanged)
+    for fp in saved_files:
         try:
-            with open(file_path, "rb") as f:
-                file_data = f.read()
-                # Derive a generic MIME type; you can refine if desired
-                maintype = "application"
-                subtype = "octet-stream"
-                msg.add_attachment(
-                    file_data,
-                    maintype=maintype,
-                    subtype=subtype,
-                    filename=os.path.basename(file_path),
-                )
+            with open(fp, "rb") as f:
+                data = f.read()
+                msg.add_attachment(data,
+                                   maintype="application",
+                                   subtype="octet-stream",
+                                   filename=os.path.basename(fp))
         except Exception as e:
-            # If an attachment fails to read, just skip it
-            print(f"Could not attach {file_path}: {e}")
-            continue
+            current_app.logger.warning(f"Skipping attachment {fp}: {e}")
 
-    # 4) Connect via SMTP and send
+    # 6) Send via SMTP (unchanged)
     try:
-        # Example uses Gmail's SMTP over SSL on port 465
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
             smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
             smtp.send_message(msg)
     except Exception as smtp_error:
-        # If email fails, clean up and return error 500
         for fp in saved_files:
-            try:
-                os.remove(fp)
-            except:
-                pass
-        print("SMTP send failed:", smtp_error)
-        return (
-            jsonify({"error": "Could not send email. Try again later."}),
-            500,
-        )
+            try: os.remove(fp)
+            except: pass
+        current_app.logger.error(f"SMTP send failed: {smtp_error}")
+        return jsonify({"error": "Could not send email. Try again later."}), 500
 
-    # 5) Clean up the temporary files
+    # 7) Cleanup and return success
     for fp in saved_files:
-        try:
-            os.remove(fp)
-        except:
-            pass
+        try: os.remove(fp)
+        except: pass
 
-    # 6) Return a JSON “OK” response (your front‐end JS can interpret this)
     return jsonify({"status": "OK"}), 200
-
 
 # ─── MAIN RUNNER ───────────────────────────────────────────────────────────────────
 
