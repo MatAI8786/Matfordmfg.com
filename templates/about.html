@@ -1,8 +1,54 @@
 {% extends "base.html" %}
-
-{% block title %}About - Matford Manufacturing{% endblock %}
+{% block title %}About – Matford Manufacturing{% endblock %}
 
 {% block content %}
-    <h2>About Matford Manufacturing</h2>
-    <p>We specialize in high-quality CNC lathe production, offering precision engineering solutions.</p>
+  <!-- Page heading -->
+  <section class="page-heading">
+    <h1>About Matford Manufacturing</h1>
+    <p class="lead">Big enough to cope, small enough to care.</p>
+  </section>
+
+  <!-- Three About “heroes” -->
+  <div class="product-heroes-grid">
+
+    <!-- Hero 1: Our Story -->
+    <div class="solo-hero" style="--hero-img: url('/static/images/about1.jpg')">
+      <div class="solo-hero__copy">
+        <h2>Our Story</h2>
+        <p>
+          Founded in 2009 by engineers Andy Langford and Tim Matyus, Matford began in a single Walsall unit. 
+          Within six months we hired our first machinists and added extra CNC lathes; by year two we’d 
+          outgrown the site and doubled head-count. Continuous investment—most notably our DMG Mori 
+          multi-axis line—now lets us compete head-to-head with Far-East pricing while keeping work here 
+          in the UK.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hero 2: What We Do -->
+    <div class="solo-hero" style="--hero-img: url('/static/images/about2.jpg')">
+      <div class="solo-hero__copy">
+        <h2>What We Do</h2>
+        <p>
+          We machine prototype-to-medium volumes for OEM production lines, aftermarket bus & truck, water & gas 
+          utilities, automotive and agricultural equipment. ISO 9001:2015 certified since 2011, our six DMG Mori 
+          NLX lathes cut multi-op parts in a single cycle—driving tighter tolerances, faster turnaround and keener cost.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hero 3: Big Enough... -->
+    <div class="solo-hero" style="--hero-img: url('/static/images/about3.jpg')">
+      <div class="solo-hero__copy">
+        <h2>Big Enough to Cope,<br>Small Enough to Care</h2>
+        <p>
+          You get the capacity of a modern CNC facility with the flexibility of an owner-managed shop. Expect rapid 
+          quotations, direct engineer-to-engineer dialogue and on-time delivery—every order, every time.  
+          Need something machined quickly? Call <a href="tel:+441234567890">+44 1234 567 890</a> or 
+          email <a href="mailto:info@matfordmfg.com">info@matfordmfg.com</a>; we’ll respond within one business day.
+        </p>
+      </div>
+    </div>
+
+  </div>
 {% endblock %}

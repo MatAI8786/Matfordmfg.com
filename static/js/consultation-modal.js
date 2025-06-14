@@ -1,66 +1,57 @@
-// static/js/consultation-modal.js
+document.addEventListener('DOMContentLoaded', () => {
+  const openBtn    = document.getElementById('open-consult-btn');
+  const modal      = document.getElementById('consultation-modal');
+  const closeBtns  = modal.querySelectorAll('.modal-close');
+  const form       = document.getElementById('consultForm');
+  const successBox = document.getElementById('consult_success');
+  const errorBox   = document.getElementById('consult_error');
+  const errorMsg   = document.getElementById('consult_error_message');
 
-document.addEventListener("DOMContentLoaded", function () {
-  // — Grab the modal elements —
-  const modalOverlay    = document.getElementById("consultation-modal");
-  const openBtn         = document.getElementById("open-consult-btn");
-  const closeButtons    = modalOverlay.querySelectorAll(".modal-close");
-  const consultForm     = document.getElementById("consultForm");
-  const successBox      = document.getElementById("consult_success");
-  const errorBox        = document.getElementById("consult_error");
-
-  // — 1) Show the modal when “Request Free Consultation” is clicked —
-  openBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    modalOverlay.classList.remove("hidden");
-
-    // Ensure the form is visible, and any messages are hidden
-    consultForm.classList.remove("hidden");
-    successBox.classList.add("hidden");
-    errorBox.classList.add("hidden");
-  });
-
-  // — 2) Hide the modal when any “.modal-close” button is clicked —
-  function closeModal() {
-    modalOverlay.classList.add("hidden");
-
-    // Reset form inputs and hide both success and error boxes
-    consultForm.reset();
-    consultForm.classList.remove("hidden");
-    successBox.classList.add("hidden");
-    errorBox.classList.add("hidden");
+  function openModal(e) {
+    e && e.preventDefault();
+    // reset states
+    form.classList.remove('hidden');
+    successBox.classList.add('hidden');
+    errorBox.classList.add('hidden');
+    modal.classList.remove('hidden');
   }
 
-  closeButtons.forEach((btn) => {
-    btn.addEventListener("click", closeModal);
-  });
+  function closeModal() {
+    modal.classList.add('hidden');
+  }
 
-  // — 3) Handle the form submission via AJAX (so we don’t navigate away) —
-  consultForm.addEventListener("submit", function (e) {
+  openBtn.addEventListener('click', openModal);
+  closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
 
-    const formData = new FormData(consultForm);
+    // Prepare form data
+    const formData = new FormData(form);
 
-    fetch(consultForm.action, {
-      method: "POST",
-      body: formData
-    })
-      .then((response) => {
-        // If status is not 2xx, treat it as an error
-        if (!response.ok) {
-          throw new Error("Server responded with " + response.status);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Only show the success box if data.status === "OK"
-        consultForm.classList.add("hidden");
-        successBox.classList.remove("hidden");
-      })
-      .catch((error) => {
-        console.error("Form submission failed:", error);
-        consultForm.classList.add("hidden");
-        errorBox.classList.remove("hidden");
+    try {
+      const resp = await fetch(form.action, {
+        method: 'POST',
+        body: formData
       });
+      const payload = await resp.json();
+
+      if (resp.ok && payload.status === 'OK') {
+        // Success!
+        form.classList.add('hidden');
+        successBox.classList.remove('hidden');
+      } else {
+        // Server responded with a validation or other error
+        form.classList.add('hidden');
+        errorBox.classList.remove('hidden');
+        errorMsg.textContent = payload.error || 'Something went wrong.';
+      }
+    } catch (networkErr) {
+      // Network failure
+      console.error('Network error:', networkErr);
+      form.classList.add('hidden');
+      errorBox.classList.remove('hidden');
+      errorMsg.textContent = 'Network error. Please check your connection.';
+    }
   });
 });

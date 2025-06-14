@@ -11,6 +11,7 @@
 
 :root{
     --blue: #0a3d62;
+    --white: #ffffff;
     --overlay-bg: rgba(0,0,0,.75);     /* darker */
 }
 
@@ -1705,3 +1706,117 @@ main > .mori-hero{
   background: #d62839;
 }
 /* ───────────────────────────────────────────────────────────────── */
+
+.banner-cta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* The link wrapper */
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1.4rem;
+  transition: opacity .2s;
+}
+.contact-item:hover {
+  opacity: 0.8;
+}
+
+/* The little circle background for icons */
+.contact-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--blue);
+  font-size: 1.8rem;
+}
+
+/* The text next to it */
+.contact-text {
+  color: var(--white);
+}
+
+/* ─── Masthead contact pills ───────────────────────────────── */
+.banner-cta{
+  display:flex;
+  align-items:center;
+  gap:1.25rem;                 /* space between the two pills */
+}
+
+.contact-item{
+  display:inline-flex;
+  align-items:center;
+  gap:.85rem;                  /* gap between circle & text   */
+  text-decoration:none;
+  font-size:1.4rem;            /* ← was 0.95rem  (+~50 %)      */
+  font-weight:600;
+  color:var(--white);          /* use the new token           */
+  transition:opacity .25s;
+}
+.contact-item:hover{opacity:.85;}
+
+.contact-icon{
+  flex:0 0 3.25rem;            /* circle size ↑               */
+  height:3.25rem;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--white);
+  color:var(--blue);
+  font-size:1.65rem;           /* bigger FA glyph             */
+  box-shadow:0 2px 10px rgba(0,0,0,.25);
+  transition:background .25s,color .25s,transform .25s;
+}
+
+.contact-item:hover .contact-icon{
+  background:#f1f5fa;          /* light tint on hover         */
+  transform:scale(1.08);
+}
+
+/* ───-- Tweaks: contact pill size & spacing 2025-06-14 --───────────── */
+.banner-cta{
+  gap:2rem;                 /* was 1.25rem  → adds overall spacing   */
+}
+
+.contact-item{
+  font-size:1.2rem;         /* text ↑                                   */
+  gap:1.1rem;               /* space between circle & text             */
+}
+
+.contact-icon{
+  width:3.6rem;             /* circle slightly larger (was 3.25)       */
+  height:3.6rem;
+  font-size:1.85rem;        /* FA glyph keeps the same visual weight   */
+}
+
+/* —— Masthead contact pill: final size & spacing override ——————————— */
+.contact-text{
+  font-size: 1.2rem;      /* matches .contact-item */
+  line-height: 1;         /* keeps vertical centring */
+  color: var(--white);    /* re-state for safety */
+}
+
+/* dial the overall spacing in a touch more */
+.banner-cta{
+  gap: 2rem;              /* space between the two pills */
+}
+
+.contact-item{
+  gap: 1.1rem;            /* space between circle & text */
+}
+.contact-icon{
+  width: 3.6rem;          /* circle */
+  height: 3.6rem;
+  font-size: 1.85rem;     /* Font Awesome glyph */
+}
