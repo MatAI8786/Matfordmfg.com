@@ -1820,3 +1820,64 @@ main > .mori-hero{
   height: 3.6rem;
   font-size: 1.85rem;     /* Font Awesome glyph */
 }
+
+/* —— About page heroes : centre-align heading & body text ———————— */
+.solo-hero{
+  /* ← you already have the flex container + padding etc. */
+  text-align:center;             /* centre the lines themselves */
+}
+
+.solo-hero__copy{
+  max-width:40rem;               /* keeps long lines readable      */
+  margin-inline:auto;            /* centres the copy block itself  */
+  display:flex;                  /* vertically centre in the hero  */
+  flex-direction:column;
+  align-items:center;
+}
+
+/* ─── About page: let each card use its own background photo ─── */
+.about-heroes-grid .solo-hero {
+  /* tint + page-specific photo (falls back to hero_bg1.png if the
+     custom --hero-img isn’t present for some reason) */
+  background:
+    linear-gradient(rgba(10,61,98,.88), rgba(10,61,98,.88)),
+    var(--hero-img, url('/static/images/hero_bg1.png'))  /*  fallback  */
+      center / cover no-repeat;
+}
+
+/* because we’ve removed the <img> column on the About version,
+   make the copy column span the full width on bigger screens */
+.about-heroes-grid .solo-hero__copy {
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+/* ─── About page: lighter overlay tint ─── */
+.about-heroes-grid .solo-hero {
+  /* 0.88 → 0.70  =  20 % brighter */
+  background:
+    linear-gradient(
+      rgba(10, 61, 98, 0.75),   /* top */
+      rgba(10,61,98,0.75)    /* bottom */
+    ),
+    var(--hero-img, url('/static/images/hero_bg1.png')) center / cover no-repeat;
+}
+
+/* ─── About page heading colours ─── */
+.about-heading h1   { 
+  color:#111;        /* near-black for strong contrast */
+}
+
+.about-heading .lead{
+  color:#666;        /* dark grey, still AA-contrast */
+}
+
+/* ─── Tweak About-page heading gap ───────────────────────── */
+.about-heading{
+  /* keep it centred, but pull it 20 % closer to nav & hero  */
+  margin-block-start: 0rem;   /* was 4rem → 20 % less     */
+  margin-block-end:   0rem;     /* was 5rem → 20 % less     */
+}
+
+/* If you ever change the global heading spacing again,
+   you only need to adjust the two numbers above.          */
