@@ -1881,3 +1881,148 @@ main > .mori-hero{
 
 /* If you ever change the global heading spacing again,
    you only need to adjust the two numbers above.          */
+
+/* ── Contact-page heading tweaks ───────────────────────── */
+.contact-heading h1{
+  margin-block: 2.5rem 1.5rem; /*  space above / below  */
+}
+
+/* ── Responsive map wrapper ────────────────────────────── */
+.map-wrapper{
+  max-width: 900px;      /* keeps it from getting too wide on 4 K screens */
+  aspect-ratio: 16/9;    /* responsive height */
+  margin-inline: auto;   /* centre horizontally */
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.map-wrapper iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* === CONTACT PAGE HERO ============================================= */
+.contact-hero{
+  position:relative;
+  padding:6rem 1rem 4rem;
+  text-align:center;
+  color:var(--white);
+  background:linear-gradient(rgba(10,61,98,.75), rgba(10,61,98,.75)),
+             url("/static/images/hero_bg1.png") center/cover no-repeat;
+}
+.contact-hero h1{font-size:clamp(2.5rem,6vw,3.5rem); margin:0;}
+.contact-hero .strap{font-size:1.1rem; margin-top:.75rem; letter-spacing:.5px}
+
+/* === CONTACT GRID ================================================== */
+.contact-grid{
+  --gap:2rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:var(--gap);
+  max-width:1200px;
+  margin:var(--gap) auto 4rem;
+}
+.contact-card{
+  background:var(--white);
+  padding:2rem 2.5rem;
+  border-radius:.75rem;
+  box-shadow:0 6px 20px rgba(0,0,0,.12);
+}
+.contact-card h2{margin-top:0}
+.contact-card dl{margin:1rem 0 1.5rem}
+.contact-card dt{font-weight:600; margin-top:.75rem}
+.contact-card dd{margin:0 0 .25rem}
+.contact-card a{color:var(--blue); text-decoration:none}
+.contact-card .hours{list-style:none; padding:0; margin:0}
+.contact-card .hours li{margin:.25rem 0}
+.map-wrap{
+  min-height:360px;
+  border-radius:.75rem;
+  overflow:hidden;
+  box-shadow:0 6px 20px rgba(0,0,0,.12);
+}
+
+/* ─── Contact page hero ─────────────────────────────────────────────── */
+.hero--contact{
+  position:relative;
+  isolation:isolate;                /* so overlay doesn’t leak */
+  min-height:40vh;                  /* ~40 % of viewport height */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:var(--white);
+  padding:4rem 2rem;
+  background:
+      /* blue overlay tint */
+      linear-gradient(
+        rgba(10,61,98,.75),
+        rgba(10,61,98,.75)
+      ),
+      /* hero photo */
+      url("/static/images/about2.jpg") center/cover no-repeat;
+}
+.hero--contact .strap{
+  font-size:1.125rem;
+  margin-top:.75rem;
+  opacity:.9;
+}
+@media (min-width:48em){           /* upscale heading on desktop */
+  .hero--contact h1{font-size:clamp(2.5rem,6vw,4.5rem);}
+}
+
+/* ─── Contact hero: match About-page cards ─────────────────────────── */
+.hero--contact{
+  /* existing rules you pasted earlier stay in place —
+     we’re only ADDING/OVERWRITING the layout bits */
+  max-width:1200px;                /* same width cap as .solo-hero cards   */
+  margin:var(--gap) auto;          /* gap above & below, centred           */
+  border-radius:.75rem;            /* identical corner radius              */
+  overflow:hidden;                 /* keeps image & overlay inside radius  */
+  box-shadow:0 6px 20px rgba(0,0,0,.12);  /* same soft shadow              */
+}
+
+/* keep heading from hugging the edge on tiny screens */
+.hero--contact .hero__inner{
+  width:100%;
+  padding:4rem 1.5rem;
+}
+
+/* ───────────────── Contact hero final tune-up ───────────────── */
+/* 1 ► centre the block + bigger side gutters -- matches About */
+.hero--contact{
+  /* 1200 px is the cap used by .solo-hero on /about            */
+  max-width:1200px;              
+  /* same vertical gap (top+bottom) but DOUBLE horizontal gap   */
+  /*   (2 × var(--gap) ≈ 4 rem on desktop)                      */
+  /* centre inside the page rails */
+  margin-block: var(--gap);   /* keeps the vertical gap            */
+  margin-inline: auto;        /* automatic left + right centring   */
+  max-width: 1200px;          /* keep the 1200-px cap              */
+  padding-inline: 2rem;       /* same white rails as other cards   */
+   
+  border-radius:.75rem;
+  overflow:hidden;
+  box-shadow:0 6px 20px rgba(0,0,0,.12);
+}
+
+/* 2 ► halve the visual height                                  */
+.hero--contact{          /* previous rule said min-height:40vh   */
+  min-height:20vh;       /*   40 vh → 20 vh  (≈ 50 % smaller)    */
+}
+
+/* 3 ► keep heading readable on tiny screens                    */
+.hero--contact .hero__inner{
+  width:100%;
+  /* 4 rem side padding on desktop → 2 rem on ≤600 px            */
+  padding:4rem 2rem;
+}
+
+/* optional: tighten on phones */
+@media (max-width:600px){
+  .hero--contact{
+    margin:var(--gap) var(--gap);  /* revert to default gutter  */
+    min-height:24vh;               /* a touch taller for copy   */
+  }
+}
