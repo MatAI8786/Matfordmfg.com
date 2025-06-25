@@ -22,7 +22,8 @@ load_dotenv()
 
 # ─── CONFIGURATION ────────────────────────────────────────────────────────────────
 
-app = Flask(__name__, static_folder="static")
+# Serve templates from the 'docs' folder and static files from 'docs/static'
+app = Flask(__name__, static_folder="docs/static", template_folder="docs")
 # Used for flashing messages if needed
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "change_this_to_a_random_key")
 
