@@ -1937,7 +1937,7 @@ main > .mori-hero{
 .contact-card .hours{list-style:none; padding:0; margin:0}
 .contact-card .hours li{margin:.25rem 0}
 .map-wrap{
-  min-height:360px;
+  min-height:540px; /* increased from 360px to give the map more presence */
   border-radius:.75rem;
   overflow:hidden;
   box-shadow:0 6px 20px rgba(0,0,0,.12);
