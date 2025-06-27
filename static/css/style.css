@@ -2043,3 +2043,247 @@ main > .mori-hero{
   box-shadow: none;                /* Remove extra shadow on iframe */
   display: block;
 }
+/* ——— MOBILE DRAWER NAV (Right Side) ——— */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;             /* anchor to right */
+    left: auto;
+    width: 240px;         /* or your preferred width */
+    height: 100vh;
+    background: rgba(255,255,255,0.97); /* glassy white */
+    backdrop-filter: blur(3px);
+    box-shadow: -6px 0 16px rgba(0,0,0,.22);
+    border-radius: 16px 0 0 16px;      /* round left corners */
+    transform: translateX(100%);       /* start hidden (off-canvas to right) */
+    transition: transform .35s cubic-bezier(.25,.8,.25,1);
+    z-index: 1100;
+    padding-top: 4.5rem;               /* leave space for toggle */
+    overflow-y: auto;
+}
+
+/* When open, slide in */
+.mobile-nav.open {
+    transform: translateX(0);
+}
+
+/* Drawer nav links */
+.mobile-nav ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.mobile-nav li { margin: 0; }
+.mobile-nav a {
+    display: block;
+    padding: 1.25rem 1rem;
+    color: #183050;           /* your brand blue, for legibility on white */
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.09rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background .2s;
+}
+.mobile-nav a:hover {
+    background: rgba(10,61,98,0.08);
+}
+
+/* Hamburger button: always on the right */
+.nav-toggle {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    left: auto;
+    z-index: 1200;
+    width: 48px;
+    height: 48px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+}
+
+/* Hamburger bars: dark for white background */
+.nav-toggle__bar, .nav-toggle__bar::before, .nav-toggle__bar::after {
+    content: '';
+    display: block;
+    width: 26px; height: 3.5px;
+    background: #1a2b49; /* dark blue/black for visibility */
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: all .3s;
+}
+
+/* === Hamburger Button (show only on mobile) === */
+.nav-toggle {
+  display: none;
+  position: fixed;
+  top: 1.1rem;
+  right: 1.1rem;
+  z-index: 1101;
+  background: transparent;
+  border: none;
+  width: 44px; height: 44px;
+}
+.nav-toggle__bar, .nav-toggle__bar::before, .nav-toggle__bar::after {
+  content: '';
+  display: block;
+  width: 28px; height: 3px;
+  background: #0a3d62;
+  margin: 0 auto;
+  border-radius: 2px;
+  transition: .3s;
+}
+.nav-toggle__bar::before { transform: translateY(-8px);}
+.nav-toggle__bar::after  { transform: translateY(5px);}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar {
+  background: transparent;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before {
+  transform: rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after {
+  transform: rotate(-45deg);
+}
+
+/* === Mobile Drawer Nav === */
+.mobile-nav {
+  position: fixed;
+  top: 0; right: 0;
+  width: 240px;
+  height: 100vh;
+  background: rgba(255,255,255,0.97); /* glassy white */
+  box-shadow: -8px 0 24px rgba(0,0,0,.20);
+  backdrop-filter: blur(5px);
+  border-radius: 16px 0 0 16px;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(.25,.8,.25,1);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  padding-top: 4rem; /* space for toggle */
+}
+.mobile-nav.open {
+  transform: translateX(0);
+}
+.mobile-nav ul {
+  list-style: none;
+  margin: 0; padding: 0;
+  width: 100%;
+}
+.mobile-nav li { margin: 0; }
+.mobile-nav a {
+  display: block;
+  padding: 1.1rem 1.5rem;
+  color: #193a56;
+  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.15rem;
+  text-decoration: none;
+  border-radius: 16px 0 0 16px;      /* rounded left corners, square right */
+  background: rgba(255,255,255,0.97); /* glassy white */
+  box-shadow: -8px 0 24px rgba(0,0,0,.20);
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #193a56;
+  margin: 0.5rem 0;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-nav a:hover {
+  background: rgba(10,61,98,0.10);
+  color: #d02b2b;
+}
+
+/* Only show toggle and drawer on mobile, hide desktop nav */
+@media (max-width: 768px) {
+  nav:not(.mobile-nav) { display: none !important; }
+  .nav-toggle { display: block !important; }
+  .mobile-nav { display: flex !important; }
+}
+@media (min-width: 769px) {
+  .nav-toggle { display: none !important; }
+  .mobile-nav { display: none !important; }
+}
+
+/* --- Mobile Nav Drawer Styles --- */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 260px;
+  max-width: 90vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.97);
+  box-shadow: -8px 0 24px rgba(0,0,0,.18);
+  backdrop-filter: blur(7px);
+  border-radius: 16px 0 0 16px;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(.25,.8,.25,1);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5.5rem;
+  overflow-y: auto;
+  /* Start hidden off-canvas */
+}
+
+/* Only show nav when .open class is set */
+.mobile-nav.open {
+  transform: translateX(0);
+}
+
+/* Hide by default on desktop */
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none !important;
+  }
+  .nav-toggle {
+    display: none !important;
+  }
+}
+
+/* Show mobile nav and hamburger only on mobile */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block !important;
+    position: fixed;
+    top: 1.1rem;
+    right: 1.1rem;
+    z-index: 1200;
+    background: transparent;
+    border: none;
+    width: 44px; height: 44px;
+  }
+  nav:not(.mobile-nav) {
+    display: none !important;
+  }
+  .mobile-nav {
+    display: flex !important;
+  }
+}
+
+/* Style nav links inside drawer */
+.mobile-nav ul {
+  list-style: none;
+  margin: 0; padding: 0;
+  width: 100%;
+}
+.mobile-nav li { margin: 0; }
+.mobile-nav a {
+  display: block;
+  padding: 1.1rem 1.5rem;
+  color: #193a56;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 7px;
+  margin: 0.5rem 0;
+  transition: background 0.18s, color 0.18s;
+}
+.mobile-nav a:hover {
+  background: rgba(10,61,98,0.09);
+  color: #d02b2b;
+}
+
