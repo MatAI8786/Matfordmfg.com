@@ -564,7 +564,7 @@ main > .video-hero {
 }
 
 /* ─── MOBILE HAMBURGER ─── */
-.nav-toggle {                        /* clickable icon  */
+.legacy-nav-toggle {                        /* clickable icon  */
   position: absolute;                /* hugs left edge  */
   top: 0.75rem; right: 1rem; left: auto;
   width: 44px; height: 44px;         /* thumb-size tap  */
@@ -574,9 +574,9 @@ main > .video-hero {
   z-index: 999;                      /* above masthead  */
 }
 
-.nav-toggle__bar,                    /* three bars      */
-.nav-toggle__bar::before,
-.nav-toggle__bar::after {
+.legacy-nav-toggle__bar,                    /* three bars      */
+.legacy-nav-toggle__bar::before,
+.legacy-nav-toggle__bar::after {
   content: '';
   display: block;
   width: 24px; height: 3px;
@@ -584,22 +584,22 @@ main > .video-hero {
   border-radius: 2px;
   transition: transform .3s ease, opacity .3s ease;
 }
-.nav-toggle__bar::before { transform: translateY(-7px); }
-.nav-toggle__bar::after  { transform: translateY(4px); }
+.legacy-nav-toggle__bar::before { transform: translateY(-7px); }
+.legacy-nav-toggle__bar::after  { transform: translateY(4px); }
 
 /*  when menu is open ➜ animate into "X"  */
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar {
+.legacy-nav-toggle[aria-expanded="true"] .legacy-nav-toggle__bar {
   background: transparent;
 }
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before {
+.legacy-nav-toggle[aria-expanded="true"] .legacy-nav-toggle__bar::before {
   transform: translateY(0) rotate(45deg);
 }
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after {
+.legacy-nav-toggle[aria-expanded="true"] .legacy-nav-toggle__bar::after {
   transform: translateY(0) rotate(-45deg);
 }
 
 /* slide-in drawer: hidden by default – slides in when .open is added */
-.mobile-nav {
+.legacy-mobile-nav {
     position:fixed;
     top:0;
     right:0;          /* anchor to right edge */
@@ -616,15 +616,15 @@ main > .video-hero {
 }
 
 
-.mobile-nav.open { transform: translateX(0); }
+.legacy-mobile-nav.open { transform: translateX(0); }
 
-.mobile-nav ul { 
+.legacy-mobile-nav ul { 
   display: block;
   list-style: none;
   margin: 0; padding: 0;
 }
-.mobile-nav li { margin: 0; }
-.mobile-nav a {
+.legacy-mobile-nav li { margin: 0; }
+.legacy-mobile-nav a {
   display: block;
   padding: 1rem 1.5rem;
   color: #fff;
@@ -632,16 +632,16 @@ main > .video-hero {
   font-weight: 500;
   text-decoration: none;
 }
-.mobile-nav a:hover {
+.legacy-mobile-nav a:hover {
   background: rgba(255,255,255,.08);
 }
 
 /* keep drawer list vertical */
-.mobile-nav ul {         /* no tag-prefix – just the class */
+.legacy-mobile-nav ul {         /* no tag-prefix – just the class */
     display:block !important;
     margin:0; padding:0;
 }
-.mobile-nav li { margin:0; }
+.legacy-mobile-nav li { margin:0; }
 
 
 /* ─────────────── NAV–HERO SPACING RESET ─────────────── */
@@ -659,10 +659,10 @@ main > .video-hero {
 }
 
 /* ─── MOBILE-DRAWER VISUAL TWEAKS ────────────────────────── */
-/* append this right after your existing .mobile-nav{…} block */
+/* append this right after your existing .legacy-mobile-nav{…} block */
 
 /* 1 ▸ softer, glassy panel */
-.mobile-nav{
+.legacy-mobile-nav{
     /* existing values stay; we just add/override ↓ */
     background: rgba(10,61,98,.90);      /* brand-blue @ 90 % opacity  */
     backdrop-filter: blur(3px);          /* subtle glass-blur          */
@@ -674,7 +674,7 @@ main > .video-hero {
 }
 
 /* 2 ▸ centre each link & add breathing-room */
-.mobile-nav a{
+.legacy-mobile-nav a{
     text-align: center;          /* horizontal centring           */
     padding: 1.25rem 1rem;       /* little taller, narrower sides */
     font-size: 1.05rem;          /* tiny bump for legibility      */
@@ -682,12 +682,12 @@ main > .video-hero {
 }
 
 /* 3 ▸ make the focus/hover glow gentler */
-.mobile-nav a:hover{
+.legacy-mobile-nav a:hover{
     background: rgba(255,255,255,.06);   /* lighter highlight          */
 }
 
 /* 4 ▸ optional: smooth motion on open/close */
-.mobile-nav{
+.legacy-mobile-nav{
     /* if you want the slide to feel silkier */
     transition: transform .35s cubic-bezier(.25,.8,.25,1);
 }
@@ -2003,7 +2003,7 @@ main > .mori-hero{
   display: block;
 }
 /* ——— MOBILE DRAWER NAV (Right Side) ——— */
-.mobile-nav {
+.legacy-mobile-nav {
     position: fixed;
     top: 0;
     right: 0;             /* anchor to right */
@@ -2022,19 +2022,19 @@ main > .mori-hero{
 }
 
 /* When open, slide in */
-.mobile-nav.open {
+.legacy-mobile-nav.open {
     transform: translateX(0);
 }
 
 /* Drawer nav links */
-.mobile-nav ul {
+.legacy-mobile-nav ul {
     display: block;
     list-style: none;
     margin: 0;
     padding: 0;
 }
-.mobile-nav li { margin: 0; }
-.mobile-nav a {
+.legacy-mobile-nav li { margin: 0; }
+.legacy-mobile-nav a {
     display: block;
     padding: 1.25rem 1rem;
     color: #183050;           /* your brand blue, for legibility on white */
@@ -2046,12 +2046,12 @@ main > .mori-hero{
     border-radius: 6px;
     transition: background .2s;
 }
-.mobile-nav a:hover {
+.legacy-mobile-nav a:hover {
     background: rgba(10,61,98,0.08);
 }
 
 /* Hamburger button: always on the right */
-.nav-toggle {
+.legacy-nav-toggle {
     position: fixed;
     top: 1.25rem;
     right: 1.25rem;
@@ -2066,7 +2066,7 @@ main > .mori-hero{
 }
 
 /* Hamburger bars: dark for white background */
-.nav-toggle__bar, .nav-toggle__bar::before, .nav-toggle__bar::after {
+.legacy-nav-toggle__bar, .legacy-nav-toggle__bar::before, .legacy-nav-toggle__bar::after {
     content: '';
     display: block;
     width: 26px; height: 3.5px;
@@ -2077,7 +2077,7 @@ main > .mori-hero{
 }
 
 /* === Hamburger Button (show only on mobile) === */
-.nav-toggle {
+.legacy-nav-toggle {
   display: none;
   position: fixed;
   top: 1.1rem;
@@ -2087,7 +2087,7 @@ main > .mori-hero{
   border: none;
   width: 44px; height: 44px;
 }
-.nav-toggle__bar, .nav-toggle__bar::before, .nav-toggle__bar::after {
+.legacy-nav-toggle__bar, .legacy-nav-toggle__bar::before, .legacy-nav-toggle__bar::after {
   content: '';
   display: block;
   width: 28px; height: 3px;
@@ -2096,20 +2096,20 @@ main > .mori-hero{
   border-radius: 2px;
   transition: .3s;
 }
-.nav-toggle__bar::before { transform: translateY(-8px);}
-.nav-toggle__bar::after  { transform: translateY(5px);}
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar {
+.legacy-nav-toggle__bar::before { transform: translateY(-8px);}
+.legacy-nav-toggle__bar::after  { transform: translateY(5px);}
+.legacy-nav-toggle[aria-expanded="true"] .legacy-nav-toggle__bar {
   background: transparent;
 }
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before {
+.legacy-nav-toggle[aria-expanded="true"] .legacy-nav-toggle__bar::before {
   transform: rotate(45deg);
 }
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after {
+.legacy-nav-toggle[aria-expanded="true"] .legacy-nav-toggle__bar::after {
   transform: rotate(-45deg);
 }
 
 /* === Mobile Drawer Nav === */
-.mobile-nav {
+.legacy-mobile-nav {
   position: fixed;
   top: 0; right: 0;
   width: 240px;
@@ -2125,16 +2125,16 @@ main > .mori-hero{
   flex-direction: column;
   padding-top: 4rem; /* space for toggle */
 }
-.mobile-nav.open {
+.legacy-mobile-nav.open {
   transform: translateX(0);
 }
-.mobile-nav ul {
+.legacy-mobile-nav ul {
   list-style: none;
   margin: 0; padding: 0;
   width: 100%;
 }
-.mobile-nav li { margin: 0; }
-.mobile-nav a {
+.legacy-mobile-nav li { margin: 0; }
+.legacy-mobile-nav a {
   display: block;
   padding: 1.1rem 1.5rem;
   color: #193a56;
@@ -2150,13 +2150,13 @@ main > .mori-hero{
   margin: 0.5rem 0;
   transition: background 0.2s, color 0.2s;
 }
-.mobile-nav a:hover {
+.legacy-mobile-nav a:hover {
   background: rgba(10,61,98,0.10);
   color: #d02b2b;
 }
 
 /* --- Mobile Nav Drawer Styles --- */
-.mobile-nav {
+.legacy-mobile-nav {
   position: fixed;
   top: 0;
   right: 0;
@@ -2178,18 +2178,18 @@ main > .mori-hero{
 }
 
 /* Only show nav when .open class is set */
-.mobile-nav.open {
+.legacy-mobile-nav.open {
   transform: translateX(0);
 }
 
 /* Style nav links inside drawer */
-.mobile-nav ul {
+.legacy-mobile-nav ul {
   list-style: none;
   margin: 0; padding: 0;
   width: 100%;
 }
-.mobile-nav li { margin: 0; }
-.mobile-nav a {
+.legacy-mobile-nav li { margin: 0; }
+.legacy-mobile-nav a {
   display: block;
   padding: 1.1rem 1.5rem;
   color: #193a56;
@@ -2200,17 +2200,17 @@ main > .mori-hero{
   margin: 0.5rem 0;
   transition: background 0.18s, color 0.18s;
 }
-.mobile-nav a:hover {
+.legacy-mobile-nav a:hover {
   background: rgba(10,61,98,0.09);
   color: #d02b2b;
 }
 /* Make hamburger bars white for blue mobile drawer */
-.nav-toggle__bar,
-.nav-toggle__bar::before,
-.nav-toggle__bar::after {
+.legacy-nav-toggle__bar,
+.legacy-nav-toggle__bar::before,
+.legacy-nav-toggle__bar::after {
   background: #fff !important;
 }
-.mobile-nav {
+.legacy-mobile-nav {
     position: fixed;
     top: 0;
     right: 0;
@@ -2237,11 +2237,11 @@ main > .mori-hero{
     box-sizing: border-box; /* Include padding in width */
 }
 
-.mobile-nav.open {
+.legacy-mobile-nav.open {
     transform: translateX(0);
 }
 
-.mobile-nav ul {
+.legacy-mobile-nav ul {
     list-style: none;
     margin: 0;
     padding: 0 0.5rem;
@@ -2250,11 +2250,11 @@ main > .mori-hero{
     gap: 0.2rem;
 }
 
-.mobile-nav li {
+.legacy-mobile-nav li {
     margin: 0;
 }
 
-.mobile-nav a {
+.legacy-mobile-nav a {
     color: #fff;
     font-size: 1.12rem;
     font-weight: 500;
@@ -2267,12 +2267,12 @@ main > .mori-hero{
     transition: background 0.18s;
 }
 
-.mobile-nav a:hover,
-.mobile-nav a:focus {
+.legacy-mobile-nav a:hover,
+.legacy-mobile-nav a:focus {
     background: rgba(255,255,255,0.10);
 }
 
-.nav-toggle {
+.legacy-nav-toggle {
     background: none !important; /* or rgba(10,61,98,0.98) */
     color: #fff !important;
     position: absolute;
@@ -2287,12 +2287,12 @@ main > .mori-hero{
 
 
 /* Remove background on links */
-.mobile-nav a {
+.legacy-mobile-nav a {
     background: none;
 }
 
 /* Limit mobile nav height and enable scroll if needed */
-.mobile-nav {
+.legacy-mobile-nav {
     overflow-y: auto;
 }
 
@@ -2388,7 +2388,7 @@ main > .mori-hero{
 
 .main-nav a:hover { background: #f2f6fa; color: #0a3d62; }
 
-.nav-toggle {
+.legacy-nav-toggle {
   display: none;
   background: none;
   border: none;
@@ -2400,9 +2400,9 @@ main > .mori-hero{
   right: 0.5rem; top: 50%; transform: translateY(-50%);
 }
 
-.nav-toggle__bar,
-.nav-toggle__bar::before,
-.nav-toggle__bar::after {
+.legacy-nav-toggle__bar,
+.legacy-nav-toggle__bar::before,
+.legacy-nav-toggle__bar::after {
   content: '';
   display: block;
   width: 28px; height: 3.5px;
@@ -2411,24 +2411,24 @@ main > .mori-hero{
   margin: 5px 0;
   transition: all .3s;
 }
-.nav-toggle__bar::before { transform: translateY(-9px); }
-.nav-toggle__bar::after  { transform: translateY(6px); }
+.legacy-nav-toggle__bar::before { transform: translateY(-9px); }
+.legacy-nav-toggle__bar::after  { transform: translateY(6px); }
 
 /* Hamburger to X animation */
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar {
+.legacy-nav-toggle[aria-expanded="true"] .legacy-nav-toggle__bar {
   background: transparent;
 }
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before {
+.legacy-nav-toggle[aria-expanded="true"] .legacy-nav-toggle__bar::before {
   transform: translateY(0) rotate(45deg);
 }
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after {
+.legacy-nav-toggle[aria-expanded="true"] .legacy-nav-toggle__bar::after {
   transform: translateY(0) rotate(-45deg);
 }
 
 /* --- Hide menu, show hamburger on mobile --- */
 @media (max-width: 768px) {
-  .main-nav ul { display: none; }
-  .nav-toggle { display: block; }
+  .legacy-main-nav-ul { display: none; }
+  .legacy-nav-toggle { display: block; }
 }
 
 /* --- Show menu on desktop --- */
@@ -2480,14 +2480,14 @@ main > .mori-hero{
 /* ----- Desktop: ≥ 769px ----- */
 @media (min-width: 769px) {
   .main-nav #nav-menu { display: flex; justify-content: center; }
-  .main-nav .nav-toggle { display: none !important; }
+  .main-nav .legacy-nav-toggle { display: none !important; }
   .dropdown-nav { display: none !important; }
 }
 
 /* ----- Mobile: ≤ 768px ----- */
 @media (max-width: 768px) {
   .main-nav #nav-menu { display: none !important; }
-  .main-nav .nav-toggle { display: block !important; margin-left: auto; margin-right: 1.5rem; }
+  .main-nav .legacy-nav-toggle { display: block !important; margin-left: auto; margin-right: 1.5rem; }
   .dropdown-nav {
     display: none;
     background: #f5f5f5;
@@ -2500,7 +2500,7 @@ main > .mori-hero{
 }
 
 /* Hamburger styling (already in your CSS, just ensure visible) */
-.nav-toggle {
+.legacy-nav-toggle {
   background: none;
   border: none;
   cursor: pointer;
@@ -2508,12 +2508,12 @@ main > .mori-hero{
 }
 
 /* ===== Hamburger Toggle Visibility ===== */
-.nav-toggle {
+.legacy-nav-toggle {
   display: none;   /* Hide by default (desktop) */
 }
 
 @media (max-width: 768px) {
-  .nav-toggle {
+  .legacy-nav-toggle {
     display: block;          /* Show on mobile */
     position: absolute;      /* or fixed if you want it sticky */
     top: 0.6rem;
@@ -2526,14 +2526,14 @@ main > .mori-hero{
     cursor: pointer;
     padding: 0;
   }
-  .main-nav ul {
+  .legacy-main-nav-ul {
     display: none;           /* Hide the nav links */
   }
 }
 
-.nav-toggle__bar,
-.nav-toggle__bar::before,
-.nav-toggle__bar::after {
+.legacy-nav-toggle__bar,
+.legacy-nav-toggle__bar::before,
+.legacy-nav-toggle__bar::after {
   content: '';
   display: block;
   width: 26px;
@@ -2544,11 +2544,11 @@ main > .mori-hero{
   transition: all 0.3s;
   position: relative;
 }
-.nav-toggle__bar::before {
+.legacy-nav-toggle__bar::before {
   position: absolute;
   top: -8px;
 }
-.nav-toggle__bar::after {
+.legacy-nav-toggle__bar::after {
   position: absolute;
   top: 8px;
 }
@@ -2563,10 +2563,10 @@ main > .mori-hero{
     align-items: center;
     justify-content: center; /* center children horizontally */
   }
-  .main-nav ul {
+  .legacy-main-nav-ul {
     display: none;  /* Hide links on mobile */
   }
-  .nav-toggle {
+  .legacy-nav-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2582,9 +2582,9 @@ main > .mori-hero{
     z-index: 10;
     cursor: pointer;
   }
-  .nav-toggle__bar,
-  .nav-toggle__bar::before,
-  .nav-toggle__bar::after {
+  .legacy-nav-toggle__bar,
+  .legacy-nav-toggle__bar::before,
+  .legacy-nav-toggle__bar::after {
     content: '';
     display: block;
     width: 28px;
@@ -2595,12 +2595,12 @@ main > .mori-hero{
     transition: all 0.3s;
     position: relative;
   }
-  .nav-toggle__bar::before {
+  .legacy-nav-toggle__bar::before {
     position: absolute;
     top: -9px;
     left: 0;
   }
-  .nav-toggle__bar::after {
+  .legacy-nav-toggle__bar::after {
     position: absolute;
     top: 9px;
     left: 0;
@@ -2609,11 +2609,11 @@ main > .mori-hero{
 
 @media (max-width: 768px) {
   /* Hide nav links, show hamburger */
-  .main-nav ul {
+  .legacy-main-nav-ul {
     display: none;
   }
 
-  .nav-toggle {
+  .legacy-nav-toggle {
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -2631,9 +2631,9 @@ main > .mori-hero{
     z-index: 1201;
   }
 
-  .nav-toggle__bar,
-  .nav-toggle__bar::before,
-  .nav-toggle__bar::after {
+  .legacy-nav-toggle__bar,
+  .legacy-nav-toggle__bar::before,
+  .legacy-nav-toggle__bar::after {
     content: '';
     display: block;
     width: 28px;
@@ -2644,12 +2644,12 @@ main > .mori-hero{
     transition: all .3s;
     position: relative;
   }
-  .nav-toggle__bar::before {
+  .legacy-nav-toggle__bar::before {
     position: absolute;
     top: -9px;
     left: 0;
   }
-  .nav-toggle__bar::after {
+  .legacy-nav-toggle__bar::after {
     position: absolute;
     top: 9px;
     left: 0;
@@ -2660,5 +2660,54 @@ main > .mori-hero{
   .main-nav {
     position: relative;
     height: 52px; /* or whatever height your bar needs */
+  }
+}
+
+/* ========================================================
+   Mobile Navigation Cleanup
+   ======================================================== */
+@media (max-width: 768px) {
+  .main-nav ul {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: transparent;
+    z-index: 1201;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-toggle__bar,
+  .nav-toggle__bar::before,
+  .nav-toggle__bar::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: #0a3d62;
+    border-radius: 2px;
+  }
+  .nav-toggle__bar::before {
+    position: relative;
+    top: -10px;
+  }
+  .nav-toggle__bar::after {
+    position: relative;
+    top: 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none;
   }
 }
