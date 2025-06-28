@@ -1,20 +1,20 @@
-// Basic hamburger menu logic for mobile drawer nav
+// /static/js/mobile-nav.js
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.nav-toggle');
-  const drawer = document.querySelector('.mobile-nav');
-  if (!toggle || !drawer) return;
+  const navToggle = document.querySelector('.nav-toggle');
+  const dropdownNav = document.querySelector('.dropdown-nav');
 
-  toggle.addEventListener('click', () => {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', !expanded);
-    drawer.classList.toggle('open');
+  // Hamburger toggles nav
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', !expanded);
+    dropdownNav.classList.toggle('open');
   });
 
-  // Optional: Close nav if you click a link in the drawer
-  drawer.querySelectorAll('a').forEach(link => {
+  // Hide dropdown if any link is clicked (optional, but nice)
+  dropdownNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', false);
-      drawer.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', false);
+      dropdownNav.classList.remove('open');
     });
   });
 });

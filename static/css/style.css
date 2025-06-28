@@ -636,48 +636,6 @@ main > .video-hero {
   background: rgba(255,255,255,.08);
 }
 
-/* ───────── MOBILE LAYOUT ───────── */
-@media (max-width:768px){                         /* ≤ 768 px  */
-
-/* 1) hide ONLY the desktop <nav>, keep the drawer visible */
-nav:not(.mobile-nav){                          /* tag nav  BUT  NOT the drawer */
-    display:none !important;
-}
-
-/* 2) show – and position – the hamburger */
-    .nav-toggle{                                 /* clickable icon    */
-        display:block !important;                /* resurrect button  */
-        position:fixed;                          /* keep it visible   */
-        top:.75rem;  right:1rem;                 /* right-hand corner */
-        z-index:999;
-    }
-
-    /* keep drawer vertical */
-  nav.mobile-nav ul   { display:block !important; }
-  nav.mobile-nav li   { margin:0; }
-
-
-/* 4) tidy drawer links */
-    .mobile-nav ul{ list-style:none; margin:0; padding:0; }
-    .mobile-nav li{ margin:0; }
-    .mobile-nav a{
-        display:block;
-        padding:1rem 1.25rem;
-        font-family:'IBM Plex Sans',sans-serif;
-        font-weight:500;
-        color:#fff;
-        text-decoration:none;
-    }
-    .mobile-nav a:hover{ background:rgba(255,255,255,.08); }
-
-/* 5) stack logo + CTA vertically (unchanged from before) */
-    .banner-inner{
-        flex-direction:column;
-        gap:.75rem;
-        padding:1.5rem .75rem;
-    }
-}
-
 /* keep drawer list vertical */
 .mobile-nav ul {         /* no tag-prefix – just the class */
     display:block !important;
@@ -2197,17 +2155,6 @@ main > .mori-hero{
   color: #d02b2b;
 }
 
-/* Only show toggle and drawer on mobile, hide desktop nav */
-@media (max-width: 768px) {
-  nav:not(.mobile-nav) { display: none !important; }
-  .nav-toggle { display: block !important; }
-  .mobile-nav { display: flex !important; }
-}
-@media (min-width: 769px) {
-  .nav-toggle { display: none !important; }
-  .mobile-nav { display: none !important; }
-}
-
 /* --- Mobile Nav Drawer Styles --- */
 .mobile-nav {
   position: fixed;
@@ -2233,36 +2180,6 @@ main > .mori-hero{
 /* Only show nav when .open class is set */
 .mobile-nav.open {
   transform: translateX(0);
-}
-
-/* Hide by default on desktop */
-@media (min-width: 769px) {
-  .mobile-nav {
-    display: none !important;
-  }
-  .nav-toggle {
-    display: none !important;
-  }
-}
-
-/* Show mobile nav and hamburger only on mobile */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block !important;
-    position: fixed;
-    top: 1.1rem;
-    right: 1.1rem;
-    z-index: 1200;
-    background: transparent;
-    border: none;
-    width: 44px; height: 44px;
-  }
-  nav:not(.mobile-nav) {
-    display: none !important;
-  }
-  .mobile-nav {
-    display: flex !important;
-  }
 }
 
 /* Style nav links inside drawer */
@@ -2379,3 +2296,369 @@ main > .mori-hero{
     overflow-y: auto;
 }
 
+@media (max-width: 768px) {
+  .banner-cta {
+    flex-direction: column !important;
+    align-items: flex-start; /* or center if you want */
+    gap: 0.5rem; /* Adds a little space between items */
+    width: 100%;
+    padding-top: 0.7rem; /* Tweak for spacing */
+  }
+  .banner-cta .contact-item {
+    width: 100%;          /* Makes items stretch nicely */
+    justify-content: flex-start;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* --- Stack and Center Contact Items at All Sizes --- */
+.banner-cta {
+  display: flex;
+  flex-direction: column;       /* Always stack vertically */
+  align-items: center;          /* Center horizontally */
+  justify-content: flex-start;  /* Optional: tweak as needed */
+  gap: 0.75rem;                 /* Space between phone/email */
+  margin-top: 1.2rem;           /* Space below logo */
+}
+
+.banner-cta .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 1.15rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  background: transparent;
+  padding: 0.15em 0.6em;
+  border-radius: 1.5em;
+  transition: background 0.2s;
+}
+
+.banner-cta .contact-item:hover,
+.banner-cta .contact-item:focus {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .banner-cta {
+    flex-direction: column; /* Stack vertically on smaller screens */
+    align-items: center;    /* Center items */
+    gap: 1rem;              /* Space between items */
+  }
+  .banner-cta .contact-item {
+    width: 100%;            /* Full width on small screens */
+    justify-content: center; /* Center text in each item */
+  }
+}
+
+/* Always show the nav strip, but... */
+.main-nav {
+  background: #fff;  /* classic white strip */
+  border-bottom: 1px solid #e4e4e4;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;      /* match your design */
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+
+.main-nav li { margin: 0 8px; }
+
+.main-nav a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.18s, color 0.18s;
+}
+
+.main-nav a:hover { background: #f2f6fa; color: #0a3d62; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  outline: none;
+  margin-left: auto;
+  margin-right: 1rem;
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem; top: 50%; transform: translateY(-50%);
+}
+
+.nav-toggle__bar,
+.nav-toggle__bar::before,
+.nav-toggle__bar::after {
+  content: '';
+  display: block;
+  width: 28px; height: 3.5px;
+  background: #0a3d62;
+  border-radius: 2px;
+  margin: 5px 0;
+  transition: all .3s;
+}
+.nav-toggle__bar::before { transform: translateY(-9px); }
+.nav-toggle__bar::after  { transform: translateY(6px); }
+
+/* Hamburger to X animation */
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar {
+  background: transparent;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before {
+  transform: translateY(0) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after {
+  transform: translateY(0) rotate(-45deg);
+}
+
+/* --- Hide menu, show hamburger on mobile --- */
+@media (max-width: 768px) {
+  .main-nav ul { display: none; }
+  .nav-toggle { display: block; }
+}
+
+/* --- Show menu on desktop --- */
+@media (min-width: 769px) {
+  .dropdown-nav { display: none !important; }
+}
+
+/* --- Mobile dropdown nav --- */
+.dropdown-nav {
+  display: none;
+  background: #fff;
+  border-bottom: 1px solid #e4e4e4;
+  width: 100%;
+  z-index: 5;
+  box-shadow: 0 3px 16px rgba(10,61,98,.05);
+  position: relative;
+}
+.dropdown-nav.open {
+  display: block;
+  animation: dropDownFade .23s cubic-bezier(.33,1.15,.45,1.08);
+}
+@keyframes dropDownFade {
+  from { opacity: 0; transform: translateY(-24px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+.dropdown-nav ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0; padding: 0;
+}
+.dropdown-nav li { border-bottom: 1px solid #e4e4e4; }
+.dropdown-nav li:last-child { border-bottom: none; }
+.dropdown-nav a {
+  color: #0a3d62;
+  font-weight: 600;
+  font-size: 1.13rem;
+  padding: 16px 22px;
+  display: block;
+  text-align: center;
+  background: none;
+  border-radius: 0;
+  transition: background 0.13s, color 0.13s;
+}
+.dropdown-nav a:hover {
+  background: #f2f6fa;
+  color: #d02b2b;
+}
+
+/* ----- Desktop: ≥ 769px ----- */
+@media (min-width: 769px) {
+  .main-nav #nav-menu { display: flex; justify-content: center; }
+  .main-nav .nav-toggle { display: none !important; }
+  .dropdown-nav { display: none !important; }
+}
+
+/* ----- Mobile: ≤ 768px ----- */
+@media (max-width: 768px) {
+  .main-nav #nav-menu { display: none !important; }
+  .main-nav .nav-toggle { display: block !important; margin-left: auto; margin-right: 1.5rem; }
+  .dropdown-nav {
+    display: none;
+    background: #f5f5f5;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    z-index: 999;
+    position: relative;  /* stack after nav */
+  }
+  .dropdown-nav.open { display: block; }
+}
+
+/* Hamburger styling (already in your CSS, just ensure visible) */
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* ... rest of your hamburger styles ... */
+}
+
+/* ===== Hamburger Toggle Visibility ===== */
+.nav-toggle {
+  display: none;   /* Hide by default (desktop) */
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;          /* Show on mobile */
+    position: absolute;      /* or fixed if you want it sticky */
+    top: 0.6rem;
+    right: 1.2rem;
+    z-index: 1201;
+    background: none;
+    border: none;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .main-nav ul {
+    display: none;           /* Hide the nav links */
+  }
+}
+
+.nav-toggle__bar,
+.nav-toggle__bar::before,
+.nav-toggle__bar::after {
+  content: '';
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #183050; /* Or #fff if you want white lines */
+  margin: 6px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+  position: relative;
+}
+.nav-toggle__bar::before {
+  position: absolute;
+  top: -8px;
+}
+.nav-toggle__bar::after {
+  position: absolute;
+  top: 8px;
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    position: relative;
+    background: #fff;
+    border-bottom: 1px solid #e3e3e3;
+    height: 56px; /* set a standard height */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* center children horizontally */
+  }
+  .main-nav ul {
+    display: none;  /* Hide links on mobile */
+  }
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .nav-toggle__bar,
+  .nav-toggle__bar::before,
+  .nav-toggle__bar::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: #183050;    /* Matford blue */
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .nav-toggle__bar::before {
+    position: absolute;
+    top: -9px;
+    left: 0;
+  }
+  .nav-toggle__bar::after {
+    position: absolute;
+    top: 9px;
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide nav links, show hamburger */
+  .main-nav ul {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* change from fixed for this nav bar */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1201;
+  }
+
+  .nav-toggle__bar,
+  .nav-toggle__bar::before,
+  .nav-toggle__bar::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: #0a3d62;      /* Matford blue */
+    border-radius: 2px;
+    margin: 0 auto;
+    transition: all .3s;
+    position: relative;
+  }
+  .nav-toggle__bar::before {
+    position: absolute;
+    top: -9px;
+    left: 0;
+  }
+  .nav-toggle__bar::after {
+    position: absolute;
+    top: 9px;
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    position: relative;
+    height: 52px; /* or whatever height your bar needs */
+  }
+}

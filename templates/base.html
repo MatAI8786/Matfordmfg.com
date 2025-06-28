@@ -8,13 +8,12 @@
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 
-  <!-- Google Fonts (if needed) -->
+  <!-- Fonts and Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400" rel="stylesheet" />
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 </head>
 <body>
-  <!-- ===== MASTHEAD / NAV ===== -->
+  <!-- ===== MASTHEAD ===== -->
   <header class="masthead">
     <div class="banner-inner">
       <div class="banner-logo">
@@ -30,34 +29,32 @@
           <span class="contact-text">info@matfordmfg.com</span>
         </a>
       </div>
-      <!-- Hamburger toggle: always present, only visible on mobile via CSS -->
-      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
-        <span class="nav-toggle__bar"></span>
-      </button>
     </div>
   </header>
 
-  <!-- PRIMARY NAVIGATION (Desktop only) -->
-  <nav class="desktop-nav">
-    <ul id="nav-menu">
-      <li><a href="{{ url_for('home') }}">Home</a></li>
-      <li><a href="{{ url_for('about') }}">About</a></li>
-      <li><a href="{{ url_for('services') }}">Services</a></li>
-      <li><a href="{{ url_for('mori_machines') }}">Mori Machines</a></li>
-      <li><a href="{{ url_for('contact') }}">Contact</a></li>
-    </ul>
-  </nav>
+<!-- NAVIGATION STRIP -->
+<nav class="main-nav">
+  <ul id="nav-menu">
+    <li><a href="{{ url_for('home') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About</a></li>
+    <li><a href="{{ url_for('services') }}">Services</a></li>
+    <li><a href="{{ url_for('mori_machines') }}">Mori Machines</a></li>
+    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" type="button">
+    <span class="nav-toggle__bar"></span>
+  </button>
+</nav>
 
-  <!-- MOBILE DRAWER NAV (hidden on desktop, slides in from right on mobile) -->
-  <nav class="mobile-nav" aria-label="Mobile">
-    <ul>
-      <li><a href="{{ url_for('home') }}">Home</a></li>
-      <li><a href="{{ url_for('about') }}">About</a></li>
-      <li><a href="{{ url_for('services') }}">Services</a></li>
-      <li><a href="{{ url_for('mori_machines') }}">Mori Machines</a></li>
-      <li><a href="{{ url_for('contact') }}">Contact</a></li>
-    </ul>
-  </nav>
+<nav class="dropdown-nav" aria-label="Mobile Navigation">
+  <ul>
+    <li><a href="{{ url_for('home') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About</a></li>
+    <li><a href="{{ url_for('services') }}">Services</a></li>
+    <li><a href="{{ url_for('mori_machines') }}">Mori Machines</a></li>
+    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+  </ul>
+</nav>
 
   {% block hero %}{% endblock %}
 
@@ -69,7 +66,6 @@
     <p>&copy; 2025 Matford Manufacturing. All rights reserved.</p>
   </footer>
 
-  <!-- Modal JS and Mobile Nav JS -->
   <script src="{{ url_for('static', filename='js/consultation-modal.js') }}"></script>
   <script src="{{ url_for('static', filename='js/mobile-nav.js') }}"></script>
 </body>
