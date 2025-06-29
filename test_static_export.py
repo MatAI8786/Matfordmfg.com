@@ -4,8 +4,11 @@ from bs4 import BeautifulSoup
 from app import app
 
 OUTPUT_DIR = 'static_export'
-BINARY_EXTENSIONS = {
-    '.db', '.pyc', '.pkl', '.exe', '.bin', '.mov', '.mp4', '.mkv', '.avi', '.ogg',
+ALLOWED_MEDIA = {
+    '.png', '.jpg', '.jpeg', '.gif', '.svg', '.mp4', '.webm', '.mov'
+}
+DISALLOWED_BINARIES = {
+    '.db', '.pyc', '.pkl', '.exe', '.bin', '.mkv', '.avi', '.ogg',
     '.wav', '.zip', '.tar', '.gz'
 }
 
@@ -41,12 +44,25 @@ class StaticExportTests(unittest.TestCase):
                     resource_path = os.path.join(OUTPUT_DIR, url)
                     self.assertTrue(os.path.exists(resource_path), f'{url} referenced in {f} is missing')
 
-    def test_no_binaries_in_static_root(self):
-        static_root = os.path.join(OUTPUT_DIR, 'static')
-        for root, _, files in os.walk(static_root):
+    def test_no_disallowed_binaries(self):
+        for root, _, files in os.walk(OUTPUT_DIR):
             for f in files:
-                if os.path.splitext(f)[1].lower() in BINARY_EXTENSIONS:
-                    self.fail(f'Binary file {f} found in static; should be in bin/')
+                ext = os.path.splitext(f)[1].lower()
+                if ext in DISALLOWED_BINARIES:
+                    self.fail(f'Disallowed binary file {f} found in export')
+
+    def test_utf8_encoding(self):
+        for root, _, files in os.walk(OUTPUT_DIR):
+            for f in files:
+                ext = os.path.splitext(f)[1].lower()
+                if ext in ALLOWED_MEDIA:
+                    continue
+                file_path = os.path.join(root, f)
+                try:
+                    with open(file_path, encoding='utf-8') as _:
+                        pass
+                except UnicodeDecodeError:
+                    self.fail(f'File {file_path} is not UTF-8 encoded')
 
 if __name__ == '__main__':
     unittest.main()

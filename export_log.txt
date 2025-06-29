@@ -1,0 +1,10 @@
+Binary files moved to bin_removed:
+- matford logo.png
+- mori.png
+- matfordmfg_site.zip
+
+Exported static site using export_static.py on $(date).
+Videos moved to static_export/bin:
+- nlx_src.mp4
+- nlx_loop_seg.mp4
+- nlx_loop.mp4
